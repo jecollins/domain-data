@@ -245,6 +245,7 @@
 
     <owl:DatatypeProperty rdf:about="&tariff;hasInterruptibleProportion">
         <dc:description rdf:datatype="&xsd;string">Proportion of a timeslot during which this load can be interrupted. Brokers should assume that the interrupted load will reappear during the following timeslot.</dc:description>
+        <rdfs:range rdf:resource="&xsd;double"/>
     </owl:DatatypeProperty>
     
 
@@ -266,7 +267,7 @@
     <owl:DatatypeProperty rdf:about="&tariff;hasNominalCapacity">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <dc:description>Nominal capacity for power production units is the production under &quot;nominal&quot; conditions. For example, a solar array will generate its nominal capacity when sunlight is striking it from a perpendicular direction, free of obstruction (shadows, clouds, haze).</dc:description>
-        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
     </owl:DatatypeProperty>
     
 
@@ -315,7 +316,19 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasChargeEfficiency"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                            </rdf:Description>
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="&xsd;double">1.0</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description rdf:datatype="&xsd;string">May be charged or discharged subject to constraints. Nominal capacity is the quantity of energy (kWh) that may be extracted when fully charged. </dc:description>
@@ -423,12 +436,6 @@
     
 
 
-    <!-- http://www.powertac.org/ontologies/2010/10/tariff.owl#Energy -->
-
-    <owl:Class rdf:about="&tariff;Energy"/>
-    
-
-
     <!-- http://www.powertac.org/ontologies/2010/10/tariff.owl#FixedRate -->
 
     <owl:Class rdf:about="&tariff;FixedRate">
@@ -437,7 +444,7 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasValue"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description rdf:datatype="&xsd;string">Fixed amount per kWh</dc:description>
@@ -453,14 +460,26 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasNominalCapacity"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasInterruptibleProportion"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="&xsd;double">0.0</xsd:minInclusive>
+                            </rdf:Description>
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="&xsd;double">1.0</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -488,15 +507,15 @@
     <owl:Class rdf:about="&tariff;Payment">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;isPaymentFor"/>
-                <owl:someValuesFrom rdf:resource="&tariff;Tariff"/>
+                <owl:onProperty rdf:resource="&tariff;hasValue"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;hasValue"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;integer"/>
+                <owl:onProperty rdf:resource="&tariff;isPaymentFor"/>
+                <owl:someValuesFrom rdf:resource="&tariff;Tariff"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -509,6 +528,12 @@
         <rdfs:subClassOf rdf:resource="&tariff;Payment"/>
         <dc:description rdf:datatype="&xsd;string">Fixed part of a two-part tariff, due at every billing cycle.</dc:description>
     </owl:Class>
+    
+
+
+    <!-- http://www.powertac.org/ontologies/2010/10/tariff.owl#PowerSource -->
+
+    <owl:Class rdf:about="&tariff;PowerSource"/>
     
 
 
@@ -534,7 +559,7 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasNominalCapacity"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -546,18 +571,6 @@
     <owl:Class rdf:about="&tariff;Rate">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;covers"/>
-                <owl:someValuesFrom rdf:resource="&tariff;PowerType"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;isRateFor"/>
-                <owl:someValuesFrom rdf:resource="&tariff;Tariff"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;appliesDuring"/>
                 <owl:someValuesFrom rdf:resource="&tariff;DailyTimeslot"/>
             </owl:Restriction>
@@ -566,6 +579,18 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;appliesDuring"/>
                 <owl:someValuesFrom rdf:resource="&tariff;WeeklyTimeslot"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&tariff;covers"/>
+                <owl:someValuesFrom rdf:resource="&tariff;PowerType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&tariff;isRateFor"/>
+                <owl:someValuesFrom rdf:resource="&tariff;Tariff"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&tariff;Tariff"/>
@@ -598,7 +623,7 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasNominalCapacity"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <dc:description rdf:datatype="&xsd;string">Energy storage usable as balancing capacity.</dc:description>
@@ -627,8 +652,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;beginsAt"/>
-                <owl:someValuesFrom rdf:resource="&tariff;AbsoluteTime"/>
+                <owl:onProperty rdf:resource="&tariff;hasMinDuration"/>
+                <owl:onClass rdf:resource="&tariff;TimeInterval"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&tariff;hasRate"/>
+                <owl:someValuesFrom rdf:resource="&tariff;Rate"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -646,6 +678,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&tariff;beginsAt"/>
+                <owl:someValuesFrom rdf:resource="&tariff;AbsoluteTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;expires"/>
                 <owl:onClass rdf:resource="&tariff;AbsoluteTime"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
@@ -653,20 +691,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;hasRate"/>
-                <owl:someValuesFrom rdf:resource="&tariff;Rate"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasMaxDuration"/>
-                <owl:onClass rdf:resource="&tariff;TimeInterval"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;hasMinDuration"/>
                 <owl:onClass rdf:resource="&tariff;TimeInterval"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
@@ -694,7 +719,16 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasValue"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;integer"/>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="&xsd;integer">0</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -706,16 +740,25 @@
     <owl:Class rdf:about="&tariff;TimeInterval">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;hasDuration"/>
+                <owl:onProperty rdf:resource="&tariff;beginsAt"/>
+                <owl:onClass rdf:resource="&tariff;Time"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;beginsAt"/>
-                <owl:onClass rdf:resource="&tariff;Time"/>
+                <owl:onProperty rdf:resource="&tariff;hasDuration"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minExclusive rdf:datatype="&xsd;integer">0</xsd:minExclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -744,22 +787,22 @@
         <rdfs:subClassOf rdf:resource="&tariff;Rate"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;hasNoticeInterval"/>
-                <owl:someValuesFrom rdf:resource="&tariff;TimeInterval"/>
+                <owl:onProperty rdf:resource="&tariff;hasMinValue"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&tariff;hasMaxValue"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&tariff;hasMinValue"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
+                <owl:onProperty rdf:resource="&tariff;hasNoticeInterval"/>
+                <owl:someValuesFrom rdf:resource="&tariff;TimeInterval"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
