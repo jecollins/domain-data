@@ -30,7 +30,7 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
  */
-public abstract class AbstractTariffCommand implements Serializable {
+public class GenericTariffCommand implements Serializable {
 
     private static int DECIMALS = 2;
     private static final long serialVersionUID = -8509590009442007573L;
@@ -67,11 +67,7 @@ public abstract class AbstractTariffCommand implements Serializable {
     private BigDecimal powerProductionThreshold;    // >0: threshold production level; production exceeding this threshold leads to a surcharge (see below) being added to the time dependent powerProductionPrice
     private BigDecimal powerProductionSurcharge;    // % fee added to hourly powerProductionPrice if production exceeds threshold (see above)
 
-    public AbstractTariffCommand() {
-        // TODO: Remove me. This is simply a help so that generic objects can be instantiated during the development phase
-    }
-
-    public AbstractTariffCommand(Long tariffId, BigDecimal signupFee, BigDecimal baseFee, BigDecimal[] powerConsumptionPriceList, BigDecimal[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, BigDecimal powerConsumptionThreshold, BigDecimal powerConsumptionSurcharge, BigDecimal powerProductionThreshold, BigDecimal powerProductionSurcharge) {
+    public GenericTariffCommand(Long tariffId, BigDecimal signupFee, BigDecimal baseFee, BigDecimal[] powerConsumptionPriceList, BigDecimal[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, BigDecimal powerConsumptionThreshold, BigDecimal powerConsumptionSurcharge, BigDecimal powerProductionThreshold, BigDecimal powerProductionSurcharge) {
         this.tariffId = tariffId;
         this.signupFee = signupFee;
         this.baseFee = baseFee;
@@ -87,7 +83,7 @@ public abstract class AbstractTariffCommand implements Serializable {
         this.powerProductionSurcharge = powerProductionSurcharge;
     }
 
-    public AbstractTariffCommand(Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
+    public GenericTariffCommand(Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
 
         this.tariffId = tariffId;
 

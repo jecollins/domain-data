@@ -1,6 +1,6 @@
 package org.powertac.common.commands;
 
-public class RevokeTariffCommand {
+public class TariffRevokeCommand {
   private String authToken;
   private Long tariffId;
 }

@@ -19,7 +19,6 @@ package org.powertac.common.commands;
 import org.joda.time.LocalDateTime;
 import org.powertac.common.enumerations.CustomerType;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -30,32 +29,34 @@ import java.util.Set;
  * in the competition. Customers may respond send their
  * response as a <code>TariffReplyCommand</code> in order
  * to either subscribe to this tariff instance or to
- * start negotiatiating the conditions.
- *
+ * start negotiating the conditions.
+ * <p/>
  * Once created this command object is immutable.
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see TariffReplyCommand, AbstractTariffCommand
+ * @see TariffReplyCommand, GenericTariffCommand
  */
-public class TariffPublishedCommand extends AbstractTariffCommand {
+public class TariffPublishCommand extends GenericTariffCommand {
 
     private static final long serialVersionUID = 1900809883839146303L;
 
     private Set<CustomerType> permittedCustomerTypes;
     private String authToken;
 
-    public TariffPublishedCommand() {
-        // TODO: Remove me. This is simply a help so that generic objects can be instantiated during the development phase
+    public TariffPublishCommand(Set<CustomerType> permitCustomerTypes, String authToken, GenericTariffCommand genericTariffCommand) {
+        super(genericTariffCommand.getTariffId(), genericTariffCommand.getSignupFee(), genericTariffCommand.getBaseFee(), genericTariffCommand.getPowerConsumptionPriceArray(), genericTariffCommand.getPowerProductionPriceArray(), genericTariffCommand.getContractStartDate(), genericTariffCommand.getContractEndDate(), genericTariffCommand.getMinimumContractRuntime(), genericTariffCommand.getMaximumContractRuntime(), genericTariffCommand.getPowerConsumptionThreshold(), genericTariffCommand.getPowerConsumptionSurcharge(), genericTariffCommand.getPowerProductionThreshold(), genericTariffCommand.getPowerProductionSurcharge());
+        this.permittedCustomerTypes = permittedCustomerTypes;
+        this.authToken = authToken;
     }
 
-    public TariffPublishedCommand(Set<CustomerType> permitCustomerTypes, String authToken, Long tariffId, BigDecimal signupFee, BigDecimal baseFee, BigDecimal[] powerConsumptionPriceList, BigDecimal[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, BigDecimal powerConsumptionThreshold, BigDecimal powerConsumptionSurcharge, BigDecimal powerProductionThreshold, BigDecimal powerProductionSurcharge) {
+    public TariffPublishCommand(Set<CustomerType> permitCustomerTypes, String authToken, Long tariffId, BigDecimal signupFee, BigDecimal baseFee, BigDecimal[] powerConsumptionPriceList, BigDecimal[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, BigDecimal powerConsumptionThreshold, BigDecimal powerConsumptionSurcharge, BigDecimal powerProductionThreshold, BigDecimal powerProductionSurcharge) {
         super(tariffId, signupFee, baseFee, powerConsumptionPriceList, powerProductionPriceList, contractStartDate, contractEndDate, minimumContractRuntime, maximumContractRuntime, powerConsumptionThreshold, powerConsumptionSurcharge, powerProductionThreshold, powerProductionSurcharge);
         this.permittedCustomerTypes = permittedCustomerTypes;
         this.authToken = authToken;
     }
 
-    public TariffPublishedCommand(Set<CustomerType> permitCustomerTypes, String authToken, Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
+    public TariffPublishCommand(Set<CustomerType> permitCustomerTypes, String authToken, Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
         super(tariffId, signupFee, baseFee, powerConsumptionPriceList, powerProductionPriceList, contractStartDate, contractEndDate, minimumContractRuntime, maximumContractRuntime, powerConsumptionThreshold, powerConsumptionSurcharge, powerProductionThreshold, powerProductionSurcharge);
         this.permittedCustomerTypes = permittedCustomerTypes;
         this.authToken = authToken;

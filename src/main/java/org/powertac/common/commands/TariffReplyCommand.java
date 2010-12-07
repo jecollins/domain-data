@@ -19,37 +19,37 @@ package org.powertac.common.commands;
 import org.joda.time.LocalDateTime;
 import org.powertac.common.enumerations.TariffState;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * Command object that represents a tariff reply, i.e.
- * a subscription to a <code>TariffPublishedCommand</code>
+ * a subscription to a <code>PublishTariffCommand</code>
  * or a counter offer in a negotiation process.
  *
  * Once created this command object is immutable.
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see TariffReplyCommand, AbstractTariffCommand
+ * @see TariffPublishCommand, GenericTariffCommand
  */
-public class TariffReplyCommand extends AbstractTariffCommand {
+public class TariffReplyCommand extends GenericTariffCommand {
 
     private static final long serialVersionUID = -2880976902173580921L;
 
     private TariffState tariffState;
 
-    public TariffReplyCommand() {
-        // TODO: Remove me. This is simply a help so that generic objects can be instantiated during the development phase
-    }
-
-    public TariffReplyCommand(TariffState tariffState, Long tariffId, BigDecimal signupFee, BigDecimal baseFee, BigDecimal[] powerConsumptionPriceList, BigDecimal[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, BigDecimal powerConsumptionThreshold, BigDecimal powerConsumptionSurcharge, BigDecimal powerProductionThreshold, BigDecimal powerProductionSurcharge) {
-        super(tariffId, signupFee, baseFee, powerConsumptionPriceList, powerProductionPriceList, contractStartDate, contractEndDate, minimumContractRuntime, maximumContractRuntime, powerConsumptionThreshold, powerConsumptionSurcharge, powerProductionThreshold, powerProductionSurcharge);
+    public TariffReplyCommand(GenericTariffCommand genericTariffCommand, TariffState tariffState) {
+        super(genericTariffCommand.getTariffId(), genericTariffCommand.getSignupFee(), genericTariffCommand.getBaseFee(), genericTariffCommand.getPowerConsumptionPriceArray(), genericTariffCommand.getPowerProductionPriceArray(), genericTariffCommand.getContractStartDate(), genericTariffCommand.getContractEndDate(), genericTariffCommand.getMinimumContractRuntime(), genericTariffCommand.getMaximumContractRuntime(), genericTariffCommand.getPowerConsumptionThreshold(), genericTariffCommand.getPowerConsumptionSurcharge(), genericTariffCommand.getPowerProductionThreshold(), genericTariffCommand.getPowerProductionSurcharge());
         this.tariffState = tariffState;
     }
 
-    public TariffReplyCommand(TariffState tariffState, Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
-        super(tariffId, signupFee, baseFee, powerConsumptionPriceList, powerProductionPriceList, contractStartDate, contractEndDate, minimumContractRuntime, maximumContractRuntime, powerConsumptionThreshold, powerConsumptionSurcharge, powerProductionThreshold, powerProductionSurcharge);
+    public TariffReplyCommand(TariffState tariffState, Long tariffId, BigDecimal signupFee, BigDecimal baseFee, BigDecimal[] powerConsumptionPriceArray, BigDecimal[] powerProductionPriceArray, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, BigDecimal powerConsumptionThreshold, BigDecimal powerConsumptionSurcharge, BigDecimal powerProductionThreshold, BigDecimal powerProductionSurcharge) {
+        super(tariffId, signupFee, baseFee, powerConsumptionPriceArray, powerProductionPriceArray, contractStartDate, contractEndDate, minimumContractRuntime, maximumContractRuntime, powerConsumptionThreshold, powerConsumptionSurcharge, powerProductionThreshold, powerProductionSurcharge);
+        this.tariffState = tariffState;
+    }
+
+    public TariffReplyCommand(TariffState tariffState, Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceArray, Double[] powerProductionPriceArray, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
+        super(tariffId, signupFee, baseFee, powerConsumptionPriceArray, powerProductionPriceArray, contractStartDate, contractEndDate, minimumContractRuntime, maximumContractRuntime, powerConsumptionThreshold, powerConsumptionSurcharge, powerProductionThreshold, powerProductionSurcharge);
         this.tariffState = tariffState;
     }
 
