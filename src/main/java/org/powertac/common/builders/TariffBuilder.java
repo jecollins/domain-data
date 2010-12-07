@@ -16,11 +16,62 @@
 
 package org.powertac.common.builders;
 
+import org.powertac.common.commands.GenericTariffCommand;
+import org.powertac.common.commands.TariffPublishCommand;
+import org.powertac.common.commands.TariffReplyCommand;
+import org.powertac.common.enumerations.CustomerType;
+import org.powertac.common.enumerations.TariffState;
+
+import java.util.Set;
+
 /**
- * TODO: Add Description
+ * TariffBuilder allows the easy creation of Tariff objects using
+ * method chaining.
+ *
+ * Example:
+ * TariffReply tr = TariffBuilder.withTariff(tariff1).setSignupFee(0.2).build()
  *
  * @author Carsten Block
  * @version 1.0, Date: 03.12.10
  */
 public class TariffBuilder {
+
+    private final GenericTariffCommand genericTariffCommand;
+    private TariffState tariffState;
+    private Set<CustomerType> permittedCustomerTypes;
+    private String authToken;
+
+    /*
+     * Private constructor to be invoked from the static factory methods only
+     */
+    private TariffBuilder(GenericTariffCommand originalTariff) {
+        this.genericTariffCommand = originalTariff;
+    }
+
+    public static TariffBuilder fromTariff(GenericTariffCommand originalTariff) {
+        return new TariffBuilder(originalTariff);
+    }
+
+    public TariffBuilder setTariffState (TariffState tariffState) {
+        this.tariffState = tariffState;
+        return this;
+    }
+
+    public TariffBuilder setPermittedCustomerTypes(Set<CustomerType> permittedCustomerTypes) {
+        this.permittedCustomerTypes = permittedCustomerTypes;
+        return this;
+    }
+
+    public TariffBuilder setAuthToken (String authToken) {
+        this.authToken = authToken;
+        return this;
+    }
+
+    public TariffReplyCommand buildTariffReplyCommand() {
+        return new TariffReplyCommand(this.genericTariffCommand, this.tariffState);
+    }
+
+    public TariffPublishCommand buildTariffPublishCommand() {
+        return new TariffPublishCommand(this.permittedCustomerTypes, this.authToken, this.genericTariffCommand);
+    }
 }
