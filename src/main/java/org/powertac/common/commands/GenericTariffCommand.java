@@ -85,7 +85,7 @@ public class GenericTariffCommand implements Serializable {
 
     public GenericTariffCommand(Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
 
-        this.tariffId = tariffId;
+            this.tariffId = tariffId;
 
         this.signupFee = new BigDecimal(signupFee.toString()); //Note: constructing BigDecimal from the double's String representation: see http://download.oracle.com/javase/1.5.0/docs/api/java/math/BigDecimal.html
         this.signupFee = this.signupFee.setScale(DECIMALS);
@@ -93,15 +93,21 @@ public class GenericTariffCommand implements Serializable {
         this.baseFee = new BigDecimal(baseFee.toString());
         this.baseFee = this.baseFee.setScale(DECIMALS);
 
-        for (int i = 0; i < powerConsumptionPriceList.length; i++) {
-            BigDecimal value = new BigDecimal(powerConsumptionPriceList[i].toString());
-            value = value.setScale(DECIMALS);
-            this.powerConsumptionPriceList[i] = value;
+        if (powerConsumptionPriceList != null) {
+            this.powerConsumptionPriceList = new BigDecimal[powerConsumptionPriceList.length];
+            for (int i = 0; i < powerConsumptionPriceList.length; i++) {
+                BigDecimal value = new BigDecimal(powerConsumptionPriceList[i].toString());
+                value = value.setScale(DECIMALS);
+                this.powerConsumptionPriceList[i] = value;
+            }
         }
-        for (int i = 0; i < powerProductionPriceList.length; i++) {
-            BigDecimal value = new BigDecimal(powerProductionPriceList[i].toString());
-            value.setScale(DECIMALS);
-            this.powerProductionPriceList[i] = value;
+        if (powerConsumptionPriceList != null) {
+            this.powerProductionPriceList = new BigDecimal[powerProductionPriceList.length];
+            for (int i = 0; i < powerProductionPriceList.length; i++) {
+                BigDecimal value = new BigDecimal(powerProductionPriceList[i].toString());
+                value.setScale(DECIMALS);
+                this.powerProductionPriceList[i] = value;
+            }
         }
 
         this.contractStartDate = contractStartDate;
