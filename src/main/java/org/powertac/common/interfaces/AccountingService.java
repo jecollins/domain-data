@@ -24,7 +24,7 @@ public interface AccountingService {
     /**
      *
      * @param cashUpdateCommand
-     * @return CashPositionCommand Latest CashChangedCommand which contains change, balance and reason
+     * @return CashChangedCommand Latest CashChangedCommand which contains change, balance and reason
      */
     CashChangedCommand processCashUpdate(CashUpdateCommand cashUpdateCommand);
 
