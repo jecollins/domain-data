@@ -38,6 +38,10 @@ public class AbstractCashCommand implements Serializable {
     String reason;
     String origin;
 
+    public AbstractCashCommand() {
+
+    }
+
     public AbstractCashCommand(Broker broker, BigDecimal moneyChange, String reason, String origin) {
         this.broker = broker;
         this.moneyChange = moneyChange;

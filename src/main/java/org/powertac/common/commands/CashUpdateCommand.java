@@ -32,6 +32,10 @@ public class CashUpdateCommand extends AbstractCashCommand {
 
     private static final long serialVersionUID = 1865147840672112686L;
 
+    public CashUpdateCommand() {
+        super();
+    }
+
     public CashUpdateCommand(Broker broker, BigDecimal moneyChange, String reason, String origin) {
         super(broker, moneyChange, reason, origin);
     }

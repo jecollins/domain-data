@@ -38,6 +38,10 @@ public class CashChangedCommand extends AbstractCashCommand {
     BigDecimal balance;
     LocalDateTime dateCreated;
 
+    public CashChangedCommand() {
+
+    }
+
     public CashChangedCommand(Broker broker, Double moneyChange, String reason, String origin, Long transactionId, Double balance, LocalDateTime dateCreated) {
         super(broker, moneyChange, reason, origin);
         this.transactionId = transactionId;
