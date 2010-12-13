@@ -20,11 +20,31 @@ import org.powertac.common.commands.TimeslotChanged;
 import org.powertac.common.commands.WeatherForecastData;
 import org.powertac.common.commands.WeatherRealData;
 
+import java.util.List;
+
 /**
  * @author David Dauer
  * @version 0.0.1
  */
 public interface PhysicalEnvironment {
+    /**
+     * Generates and returns the real weather data for a given timeslot
+     * for customers, brokers, distribution utility
+     *
+     * Make sure that the timeslotChanged parameter is referenced within the WeatherReadData command
+     * so that customers/brokers know which timeslot the data is for
+     *
+     * @param timeslotChanged the changed (deactivated) timeslot
+     * @return The actual weather data for the given timeslotChanged parameter
+     */
     WeatherRealData generateRealWeatherData(TimeslotChanged timeslotChanged);
-    WeatherForecastData generateForecastWeatherData(TimeslotChanged timeslotChanged);
+
+    /**
+     * Generates and returns weather forecasts for every enabled timeslot
+     * The module is responsible for retrieving all enabled timeslots
+     *
+     * @param currentTimeslot the current timeslot
+     * @return a list of weather forecast objects
+     */
+    List<WeatherForecastData> generateForecastWeatherData(TimeslotChanged currentTimeslot);
 }

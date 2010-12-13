@@ -16,7 +16,13 @@ public interface Customer {
      */
     List<TariffReply> processTariffList(List<TariffPublish> tariffPublishList);
 
-    MeterReading generateMeterReading(TimeslotChanged timeslotChanged);
+    /**
+     * Called when a new weather forecast is available
+     * @param weatherForecastDataList weather forecast for a timeslot
+     */
+    void processWeatherForecasts(List<WeatherForecastData> weatherForecastDataList);
+
+    MeterReading generateMeterReading(WeatherRealData weatherRealData);
 
     CustomerInfo generateCustomerInfo();
 }
