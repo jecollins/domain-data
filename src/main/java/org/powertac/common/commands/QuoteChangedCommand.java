@@ -13,7 +13,7 @@ import java.math.BigDecimal;
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see org.powertac.common.commands.OrderbookChangedCommand
+ * @see OrderbookChanged
  */
 public class QuoteChangedCommand {
   LocalDateTime dateCreated;
