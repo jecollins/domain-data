@@ -7,7 +7,7 @@ import java.util.List;
 public interface Customer {
 
     //void processTimeslot(TimeslotCreatedCommand timeslotCreatedCommand);
-    //void processTimeslot(TimeslotChangedCommand timeslotChangedCommand);
+    //void processTimeslot(TimeslotChanged timeslotChanged);
 
     /**
      *
@@ -16,7 +16,7 @@ public interface Customer {
      */
     List<TariffReply> processTariffList(List<TariffPublish> tariffPublishList);
 
-    MeterReading generateMeterReading(TimeslotChangedCommand timeslotChangedCommand);
+    MeterReading generateMeterReading(TimeslotChanged timeslotChanged);
 
     CustomerInfo generateCustomerInfo();
 }
