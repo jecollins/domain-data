@@ -2,7 +2,7 @@ package org.powertac.common.interfaces;
 
 import org.powertac.common.commands.ShoutChanged;
 import org.powertac.common.commands.ShoutCreate;
-import org.powertac.common.commands.ShoutDeleteCommand;
+import org.powertac.common.commands.ShoutDelete;
 import org.powertac.common.commands.ShoutUpdateCommand;
 
 import java.util.List;
@@ -35,10 +35,10 @@ public interface Auctioneer {
 
   /**
    *
-   * @param shoutDeleteCommand command object that contains the shoutId that should be deleted
+   * @param shoutDelete command object that contains the shoutId that should be deleted
    * @return ShoutChangedCommand object that contains the new status of the deleted shout
    */
-  ShoutChanged processShoutDelete(ShoutDeleteCommand shoutDeleteCommand);
+  ShoutChanged processShoutDelete(ShoutDelete shoutDelete);
 
   ShoutChanged processShoutUpdate(ShoutUpdateCommand shoutUpdateCommand);
 
