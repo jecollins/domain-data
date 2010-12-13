@@ -19,7 +19,6 @@ package org.powertac.common.commands;
 import org.joda.time.LocalDateTime;
 import org.powertac.common.interfaces.Broker;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -30,7 +29,7 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 02.12.10
  */
-public class CashChangedCommand extends AbstractCashCommand {
+public class CashChanged extends AbstractCash {
 
     private static final long serialVersionUID = -2283491588688754258L;
 
@@ -38,7 +37,11 @@ public class CashChangedCommand extends AbstractCashCommand {
     BigDecimal balance;
     LocalDateTime dateCreated;
 
-    public CashChangedCommand(Broker broker, Double moneyChange, String reason, String origin, Long transactionId, Double balance, LocalDateTime dateCreated) {
+    public CashChanged() {
+
+    }
+
+    public CashChanged(Broker broker, Double moneyChange, String reason, String origin, Long transactionId, Double balance, LocalDateTime dateCreated) {
         super(broker, moneyChange, reason, origin);
         this.transactionId = transactionId;
         BigDecimal value = new BigDecimal(balance);
@@ -47,7 +50,7 @@ public class CashChangedCommand extends AbstractCashCommand {
         this.dateCreated = dateCreated;
     }
 
-    public CashChangedCommand(Broker broker, BigDecimal moneyChange, String reason, String origin, Long transactionId, BigDecimal balance, LocalDateTime dateCreated) {
+    public CashChanged(Broker broker, BigDecimal moneyChange, String reason, String origin, Long transactionId, BigDecimal balance, LocalDateTime dateCreated) {
         super(broker, moneyChange, reason, origin);
         this.transactionId = transactionId;
         this.balance = balance;

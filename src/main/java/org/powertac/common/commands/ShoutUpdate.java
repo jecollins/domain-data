@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
  */
-public class ShoutUpdateCommand {
+public class ShoutUpdate {
   String authToken;
   BigDecimal quantity;
   BigDecimal limitPrice;

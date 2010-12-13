@@ -1,9 +1,9 @@
 package org.powertac.common.interfaces;
 
-import org.powertac.common.commands.ShoutChangedCommand;
-import org.powertac.common.commands.ShoutCreateCommand;
-import org.powertac.common.commands.ShoutDeleteCommand;
-import org.powertac.common.commands.ShoutUpdateCommand;
+import org.powertac.common.commands.ShoutChanged;
+import org.powertac.common.commands.ShoutCreate;
+import org.powertac.common.commands.ShoutDelete;
+import org.powertac.common.commands.ShoutUpdate;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public interface Auctioneer {
 
   /**
    * Process an incoming shout, e.g. by matching it against existing shouts
-   * As a CDA market auctioneer this is the method to match the <code>shoutCreateCommand</shout>
+   * As a CDA market auctioneer this is the method to match the <code>shoutCreate</shout>
    * against existing shouts in order to execute it immediately. As a call (PDA) market auctioner
    * this method could be used to store the new shout and to wait for a <code>ClearMarketCommand</code>
    * in order to start the matching and execution process.
@@ -27,19 +27,19 @@ public interface Auctioneer {
    * returned in a list so that other components (e.g. <code>AccountingService</code>) can further
    * process these objects futher downstream in the channel.
    *
-   * @param shoutCreateCommand new incoming shout from a broker
-   * @return List of objects, which might include <code>DepotUpdateCommand</code>, <code>CashUpdateCommand</code>, <code>OrderbookChangedCommand</code>,<code>QuoteChangedCommand</code>,<code>TradeOccurredCommand</code>,<code>ShoutChangedCommand</code>
-   * @see org.powertac.common.commands.DepotUpdateCommand, CashUpdateCommand, OrderbookChangedCommand, QuoteChangedCommand, TradeOccurredCommand, ShoutChangedCommand
+   * @param shoutCreate new incoming shout from a broker
+   * @return List of objects, which might include <code>DepotUpdate</code>, <code>CashUpdate</code>, <code>OrderbookChanged</code>,<code>QuoteChanged</code>,<code>TradeOccurred</code>,<code>ShoutChanged</code>
+   * @see org.powertac.common.commands.DepotUpdate , CashUpdate, OrderbookChanged, QuoteChanged, TradeOccurred, ShoutChanged
    */
-  List processShoutCreate(ShoutCreateCommand shoutCreateCommand);
+  List processShoutCreate(ShoutCreate shoutCreate);
 
   /**
    *
-   * @param shoutDeleteCommand command object that contains the shoutId that should be deleted
+   * @param shoutDelete command object that contains the shoutId that should be deleted
    * @return ShoutChangedCommand object that contains the new status of the deleted shout
    */
-  ShoutChangedCommand processShoutDelete(ShoutDeleteCommand shoutDeleteCommand);
+  ShoutChanged processShoutDelete(ShoutDelete shoutDelete);
 
-  ShoutChangedCommand processShoutUpdate(ShoutUpdateCommand shoutUpdateCommand);
+  ShoutChanged processShoutUpdate(ShoutUpdate shoutUpdate);
 
 }

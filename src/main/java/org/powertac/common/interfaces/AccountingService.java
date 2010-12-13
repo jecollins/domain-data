@@ -9,42 +9,42 @@ public interface AccountingService {
     /**
      * Save individual meter reading on a customer basis
      * and calculate meter reading balance
-     * @param meterReadingCommandList
+     * @param meterReadingList
      * @return List<MeterReadingBalanceCommand> a list of meter reading balances per broker
      */
-    List<MeterReadingBalanceCommand> processMeterReadings(List<MeterReadingCommand> meterReadingCommandList);
+    List<MeterReadingBalance> processMeterReadings(List<MeterReading> meterReadingList);
 
     /**
      *
-     * @param depotUpdateCommand
-     * @return DepotChangedCommand Latest DepotChangedCommand which contains change, balance and reason
+     * @param depotUpdate
+     * @return DepotChangedCommand Latest DepotChanged which contains change, balance and reason
      */
-    DepotChangedCommand processDepotUpdate(DepotUpdateCommand depotUpdateCommand);
+    DepotChanged processDepotUpdate(DepotUpdate depotUpdate);
 
     /**
      *
-     * @param cashUpdateCommand
-     * @return CashPositionCommand Latest CashChangedCommand which contains change, balance and reason
+     * @param cashUpdate
+     * @return CashChangedCommand Latest CashChanged which contains change, balance and reason
      */
-    CashChangedCommand processCashUpdate(CashUpdateCommand cashUpdateCommand);
+    CashChanged processCashUpdate(CashUpdate cashUpdate);
 
     /**
      *
      * @return a list of all active tariffs
      */
-    List<TariffPublishCommand> publishTariffList();
+    List<TariffPublish> publishTariffList();
 
     /**
-     * Stores and forwards the tariffReplyCommand to its corresponding broker
-     * @param tariffReplyCommand
-     * @return the identical tariffReplyCommand parameter
+     * Stores and forwards the tariffReply to its corresponding broker
+     * @param tariffReply
+     * @return the identical tariffReply parameter
      */
-    TariffReplyCommand processTariffReply(TariffReplyCommand tariffReplyCommand);
+    TariffReply processTariffReply(TariffReply tariffReply);
 
     /**
      * Stores and forwards the list of customer info
-     * @return the identical customerInfoCommands parameter
+     * @return the identical customerInfo parameter
      */
-    List<CustomerInfoCommand> processCustomerInfo(List<CustomerInfoCommand> customerInfoCommands);
+    List<CustomerInfo> processCustomerInfo(List<CustomerInfo> customerInfo);
 
 }

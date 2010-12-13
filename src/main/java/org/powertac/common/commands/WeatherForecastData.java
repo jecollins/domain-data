@@ -14,17 +14,13 @@
  * limitations under the License.
  */
 
-package org.powertac.common.interfaces;
-
-import org.powertac.common.commands.TimeslotChanged;
-import org.powertac.common.commands.WeatherForecastData;
-import org.powertac.common.commands.WeatherRealData;
+package org.powertac.common.commands;
 
 /**
  * @author David Dauer
  * @version 0.0.1
  */
-public interface PhysicalEnvironment {
-    WeatherRealData generateRealWeatherData(TimeslotChanged timeslotChanged);
-    WeatherForecastData generateForecastWeatherData(TimeslotChanged timeslotChanged);
+public class WeatherForecastData {
+    // all data within this class will be shared between the PE module and all other modules within the server
+    // and all brokers
 }

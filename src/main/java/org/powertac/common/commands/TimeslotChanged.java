@@ -18,23 +18,20 @@ package org.powertac.common.commands;
 
 import org.joda.time.LocalDateTime;
 
-import java.io.Serializable;
-
 /**
- * Command object that represents a newly created
- * timeslot.
+ * Command object that represents an updated timeslot.
  *
  * Once created this class is immutable.
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see AbstractTimeslotCommand, TimeslotChangedCommand
+ * @see AbstractTimeslot , TimeslotCreated
  */
-public class TimeslotCreatedCommand extends AbstractTimeslotCommand {
+public class TimeslotChanged extends AbstractTimeslot {
 
-    private static final long serialVersionUID = 2795655318065268694L;
+    private static final long serialVersionUID = -1312243299103119351L;
 
-    protected TimeslotCreatedCommand(Long timeslotId, LocalDateTime startDate, LocalDateTime endDate, Boolean enabled) {
+    public TimeslotChanged(Long timeslotId, LocalDateTime startDate, LocalDateTime endDate, Boolean enabled) {
         super(timeslotId, startDate, endDate, enabled);
     }
 }

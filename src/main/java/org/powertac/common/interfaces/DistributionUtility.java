@@ -1,6 +1,6 @@
 package org.powertac.common.interfaces;
 
-import org.powertac.common.commands.MeterReadingBalanceCommand;
+import org.powertac.common.commands.MeterReadingBalance;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ public interface DistributionUtility {
 
     /**
      *
-     * @param meterReadingBalanceCommands
-     * @return a list of DepotUpdateCommand and CashUpdateCommand objects
+     * @param meterReadingBalances
+     * @return a list of DepotUpdate and CashUpdate objects
      */
-    List processMeterReadingBalances(List<MeterReadingBalanceCommand> meterReadingBalanceCommands);
+    List processMeterReadingBalances(List<MeterReadingBalance> meterReadingBalances);
 
 }

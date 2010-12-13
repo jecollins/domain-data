@@ -8,7 +8,7 @@ package org.powertac.common.commands;
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
  */
-public class ShoutDeleteCommand {
+public class ShoutDelete {
   String authToken;
   Long shoutId;
 }

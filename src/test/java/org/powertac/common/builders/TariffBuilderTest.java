@@ -4,8 +4,8 @@ import org.joda.time.LocalDateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.powertac.common.commands.TariffPublishCommand;
-import org.powertac.common.commands.TariffReplyCommand;
+import org.powertac.common.commands.TariffPublish;
+import org.powertac.common.commands.TariffReply;
 import org.powertac.common.enumerations.TariffState;
 
 import static org.junit.Assert.assertEquals;

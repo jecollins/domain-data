@@ -7,14 +7,14 @@ import org.powertac.common.interfaces.Timeslot;
 import java.math.BigDecimal;
 
 /**
- * An OrderbookChangedCommand represents
+ * An OrderbookChanged represents
  * an orderbook state up to the depth of 10 orders on
  * the buy and sell side.
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
  */
-public class OrderbookChangedCommand {
+public class OrderbookChanged {
     LocalDateTime dateCreated;
     Long transactionID;
     Timeslot timeslot;

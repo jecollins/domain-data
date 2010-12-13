@@ -13,14 +13,14 @@ import java.math.BigDecimal;
  * Command object that contains all data of a
  * particular shout from the Power TAC wholesale
  * market. It is an "enriched" version of the
- * <code>ShoutCreateCommand</code> a broker originially
+ * <code>ShoutCreate</code> a broker originially
  * sends to the server and used to report back the current
  * execution status of a shout to the broker.
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
  */
-public class ShoutChangedCommand {
+public class ShoutChanged {
   Long shoutID;
   Long transactionID;
   Product product;

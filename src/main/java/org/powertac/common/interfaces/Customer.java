@@ -6,17 +6,17 @@ import java.util.List;
 
 public interface Customer {
 
-    //void processTimeslot(TimeslotCreatedCommand timeslotCreatedCommand);
-    //void processTimeslot(TimeslotChangedCommand timeslotChangedCommand);
+    //void processTimeslot(TimeslotCreated timeslotCreatedCommand);
+    //void processTimeslot(TimeslotChanged timeslotChanged);
 
     /**
      *
-     * @param List<TariffPublishedCommand> tariffPublishCommandList
+     * @param List<TariffPublishedCommand> tariffPublishList
      * @return A list of possible tariff replies which represent subscriptions or negotiation interactions
      */
-    List<TariffReplyCommand> processTariffList(List<TariffPublishCommand> tariffPublishCommandList);
+    List<TariffReply> processTariffList(List<TariffPublish> tariffPublishList);
 
-    MeterReadingCommand generateMeterReading(TimeslotChangedCommand timeslotChangedCommand);
+    MeterReading generateMeterReading(TimeslotChanged timeslotChanged);
 
-    CustomerInfoCommand generateCustomerInfo();
+    CustomerInfo generateCustomerInfo();
 }
