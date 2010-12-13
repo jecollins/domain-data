@@ -3,7 +3,7 @@ package org.powertac.common.interfaces;
 import org.powertac.common.commands.ShoutChanged;
 import org.powertac.common.commands.ShoutCreate;
 import org.powertac.common.commands.ShoutDelete;
-import org.powertac.common.commands.ShoutUpdateCommand;
+import org.powertac.common.commands.ShoutUpdate;
 
 import java.util.List;
 
@@ -40,6 +40,6 @@ public interface Auctioneer {
    */
   ShoutChanged processShoutDelete(ShoutDelete shoutDelete);
 
-  ShoutChanged processShoutUpdate(ShoutUpdateCommand shoutUpdateCommand);
+  ShoutChanged processShoutUpdate(ShoutUpdate shoutUpdate);
 
 }
