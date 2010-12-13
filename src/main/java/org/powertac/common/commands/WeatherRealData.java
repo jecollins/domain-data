@@ -20,7 +20,7 @@ package org.powertac.common.commands;
  * @author David Dauer
  * @version 0.0.1
  */
-public class WeatherRealDataCommand {
+public class WeatherRealData {
     // all data within this class will be shared between the PE module and all other modules within the server
     // and all brokers
 }

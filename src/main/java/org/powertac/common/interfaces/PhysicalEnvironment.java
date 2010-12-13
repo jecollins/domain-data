@@ -18,13 +18,13 @@ package org.powertac.common.interfaces;
 
 import org.powertac.common.commands.TimeslotChanged;
 import org.powertac.common.commands.WeatherForecastData;
-import org.powertac.common.commands.WeatherRealDataCommand;
+import org.powertac.common.commands.WeatherRealData;
 
 /**
  * @author David Dauer
  * @version 0.0.1
  */
 public interface PhysicalEnvironment {
-    WeatherRealDataCommand generateRealWeatherData(TimeslotChanged timeslotChanged);
+    WeatherRealData generateRealWeatherData(TimeslotChanged timeslotChanged);
     WeatherForecastData generateForecastWeatherData(TimeslotChanged timeslotChanged);
 }
