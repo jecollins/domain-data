@@ -16,7 +16,7 @@
 
 package org.powertac.common.builders;
 
-import org.powertac.common.commands.GenericTariffCommand;
+import org.powertac.common.commands.GenericTariff;
 import org.powertac.common.commands.TariffPublishCommand;
 import org.powertac.common.commands.TariffReplyCommand;
 import org.powertac.common.enumerations.CustomerType;
@@ -36,7 +36,7 @@ import java.util.Set;
  */
 public class TariffBuilder {
 
-    private final GenericTariffCommand genericTariffCommand;
+    private final GenericTariff genericTariff;
     private TariffState tariffState;
     private Set<CustomerType> permittedCustomerTypes;
     private String authToken;
@@ -44,11 +44,11 @@ public class TariffBuilder {
     /*
      * Private constructor to be invoked from the static factory methods only
      */
-    private TariffBuilder(GenericTariffCommand originalTariff) {
-        this.genericTariffCommand = originalTariff;
+    private TariffBuilder(GenericTariff originalTariff) {
+        this.genericTariff = originalTariff;
     }
 
-    public static TariffBuilder fromTariff(GenericTariffCommand originalTariff) {
+    public static TariffBuilder fromTariff(GenericTariff originalTariff) {
         return new TariffBuilder(originalTariff);
     }
 
@@ -68,10 +68,10 @@ public class TariffBuilder {
     }
 
     public TariffReplyCommand buildTariffReplyCommand() {
-        return new TariffReplyCommand(this.genericTariffCommand, this.tariffState);
+        return new TariffReplyCommand(this.genericTariff, this.tariffState);
     }
 
     public TariffPublishCommand buildTariffPublishCommand() {
-        return new TariffPublishCommand(this.permittedCustomerTypes, this.authToken, this.genericTariffCommand);
+        return new TariffPublishCommand(this.permittedCustomerTypes, this.authToken, this.genericTariff);
     }
 }

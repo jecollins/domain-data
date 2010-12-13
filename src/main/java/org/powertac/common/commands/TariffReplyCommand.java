@@ -30,16 +30,16 @@ import java.math.BigDecimal;
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see TariffPublishCommand, GenericTariffCommand
+ * @see TariffPublishCommand, GenericTariff
  */
-public class TariffReplyCommand extends GenericTariffCommand {
+public class TariffReplyCommand extends GenericTariff {
 
     private static final long serialVersionUID = -2880976902173580921L;
 
     private TariffState tariffState;
 
-    public TariffReplyCommand(GenericTariffCommand genericTariffCommand, TariffState tariffState) {
-        super(genericTariffCommand.getTariffId(), genericTariffCommand.getSignupFee(), genericTariffCommand.getBaseFee(), genericTariffCommand.getPowerConsumptionPriceArray(), genericTariffCommand.getPowerProductionPriceArray(), genericTariffCommand.getContractStartDate(), genericTariffCommand.getContractEndDate(), genericTariffCommand.getMinimumContractRuntime(), genericTariffCommand.getMaximumContractRuntime(), genericTariffCommand.getPowerConsumptionThreshold(), genericTariffCommand.getPowerConsumptionSurcharge(), genericTariffCommand.getPowerProductionThreshold(), genericTariffCommand.getPowerProductionSurcharge());
+    public TariffReplyCommand(GenericTariff genericTariff, TariffState tariffState) {
+        super(genericTariff.getTariffId(), genericTariff.getSignupFee(), genericTariff.getBaseFee(), genericTariff.getPowerConsumptionPriceArray(), genericTariff.getPowerProductionPriceArray(), genericTariff.getContractStartDate(), genericTariff.getContractEndDate(), genericTariff.getMinimumContractRuntime(), genericTariff.getMaximumContractRuntime(), genericTariff.getPowerConsumptionThreshold(), genericTariff.getPowerConsumptionSurcharge(), genericTariff.getPowerProductionThreshold(), genericTariff.getPowerProductionSurcharge());
         this.tariffState = tariffState;
     }
 

@@ -35,17 +35,17 @@ import java.util.Set;
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see TariffReplyCommand, GenericTariffCommand
+ * @see TariffReplyCommand, GenericTariff
  */
-public class TariffPublishCommand extends GenericTariffCommand {
+public class TariffPublishCommand extends GenericTariff {
 
     private static final long serialVersionUID = 1900809883839146303L;
 
     private Set<CustomerType> permittedCustomerTypes;
     private String authToken;
 
-    public TariffPublishCommand(Set<CustomerType> permitCustomerTypes, String authToken, GenericTariffCommand genericTariffCommand) {
-        super(genericTariffCommand.getTariffId(), genericTariffCommand.getSignupFee(), genericTariffCommand.getBaseFee(), genericTariffCommand.getPowerConsumptionPriceArray(), genericTariffCommand.getPowerProductionPriceArray(), genericTariffCommand.getContractStartDate(), genericTariffCommand.getContractEndDate(), genericTariffCommand.getMinimumContractRuntime(), genericTariffCommand.getMaximumContractRuntime(), genericTariffCommand.getPowerConsumptionThreshold(), genericTariffCommand.getPowerConsumptionSurcharge(), genericTariffCommand.getPowerProductionThreshold(), genericTariffCommand.getPowerProductionSurcharge());
+    public TariffPublishCommand(Set<CustomerType> permitCustomerTypes, String authToken, GenericTariff genericTariff) {
+        super(genericTariff.getTariffId(), genericTariff.getSignupFee(), genericTariff.getBaseFee(), genericTariff.getPowerConsumptionPriceArray(), genericTariff.getPowerProductionPriceArray(), genericTariff.getContractStartDate(), genericTariff.getContractEndDate(), genericTariff.getMinimumContractRuntime(), genericTariff.getMaximumContractRuntime(), genericTariff.getPowerConsumptionThreshold(), genericTariff.getPowerConsumptionSurcharge(), genericTariff.getPowerProductionThreshold(), genericTariff.getPowerProductionSurcharge());
         this.permittedCustomerTypes = permittedCustomerTypes;
         this.authToken = authToken;
     }

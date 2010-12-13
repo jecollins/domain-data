@@ -30,7 +30,7 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
  */
-public class GenericTariffCommand implements Serializable {
+public class GenericTariff implements Serializable {
 
     private static int DECIMALS = 2;
     private static final long serialVersionUID = -8509590009442007573L;
@@ -67,7 +67,7 @@ public class GenericTariffCommand implements Serializable {
     private BigDecimal powerProductionThreshold;    // >0: threshold production level; production exceeding this threshold leads to a surcharge (see below) being added to the time dependent powerProductionPrice
     private BigDecimal powerProductionSurcharge;    // % fee added to hourly powerProductionPrice if production exceeds threshold (see above)
 
-    public GenericTariffCommand(Long tariffId, BigDecimal signupFee, BigDecimal baseFee, BigDecimal[] powerConsumptionPriceList, BigDecimal[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, BigDecimal powerConsumptionThreshold, BigDecimal powerConsumptionSurcharge, BigDecimal powerProductionThreshold, BigDecimal powerProductionSurcharge) {
+    public GenericTariff(Long tariffId, BigDecimal signupFee, BigDecimal baseFee, BigDecimal[] powerConsumptionPriceList, BigDecimal[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, BigDecimal powerConsumptionThreshold, BigDecimal powerConsumptionSurcharge, BigDecimal powerProductionThreshold, BigDecimal powerProductionSurcharge) {
         this.tariffId = tariffId;
         this.signupFee = signupFee;
         this.baseFee = baseFee;
@@ -83,7 +83,7 @@ public class GenericTariffCommand implements Serializable {
         this.powerProductionSurcharge = powerProductionSurcharge;
     }
 
-    public GenericTariffCommand(Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
+    public GenericTariff(Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
 
             this.tariffId = tariffId;
 
