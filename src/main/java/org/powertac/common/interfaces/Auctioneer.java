@@ -1,7 +1,7 @@
 package org.powertac.common.interfaces;
 
 import org.powertac.common.commands.ShoutChanged;
-import org.powertac.common.commands.ShoutCreateCommand;
+import org.powertac.common.commands.ShoutCreate;
 import org.powertac.common.commands.ShoutDeleteCommand;
 import org.powertac.common.commands.ShoutUpdateCommand;
 
@@ -18,7 +18,7 @@ public interface Auctioneer {
 
   /**
    * Process an incoming shout, e.g. by matching it against existing shouts
-   * As a CDA market auctioneer this is the method to match the <code>shoutCreateCommand</shout>
+   * As a CDA market auctioneer this is the method to match the <code>shoutCreate</shout>
    * against existing shouts in order to execute it immediately. As a call (PDA) market auctioner
    * this method could be used to store the new shout and to wait for a <code>ClearMarketCommand</code>
    * in order to start the matching and execution process.
@@ -27,11 +27,11 @@ public interface Auctioneer {
    * returned in a list so that other components (e.g. <code>AccountingService</code>) can further
    * process these objects futher downstream in the channel.
    *
-   * @param shoutCreateCommand new incoming shout from a broker
+   * @param shoutCreate new incoming shout from a broker
    * @return List of objects, which might include <code>DepotUpdate</code>, <code>CashUpdate</code>, <code>OrderbookChanged</code>,<code>QuoteChanged</code>,<code>TradeOccurredCommand</code>,<code>ShoutChanged</code>
    * @see org.powertac.common.commands.DepotUpdate , CashUpdate, OrderbookChanged, QuoteChanged, TradeOccurredCommand, ShoutChanged
    */
-  List processShoutCreate(ShoutCreateCommand shoutCreateCommand);
+  List processShoutCreate(ShoutCreate shoutCreate);
 
   /**
    *
