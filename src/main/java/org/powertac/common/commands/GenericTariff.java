@@ -17,6 +17,7 @@
 package org.powertac.common.commands;
 
 import org.joda.time.LocalDateTime;
+import org.powertac.common.Constants;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -32,7 +33,6 @@ import java.math.BigDecimal;
  */
 public class GenericTariff implements Serializable {
 
-    private static int DECIMALS = 2;
     private static final long serialVersionUID = -8509590009442007573L;
 
     private Long tariffId;
@@ -88,16 +88,16 @@ public class GenericTariff implements Serializable {
             this.tariffId = tariffId;
 
         this.signupFee = new BigDecimal(signupFee.toString()); //Note: constructing BigDecimal from the double's String representation: see http://download.oracle.com/javase/1.5.0/docs/api/java/math/BigDecimal.html
-        this.signupFee = this.signupFee.setScale(DECIMALS);
+        this.signupFee = this.signupFee.setScale(Constants.DECIMALS);
 
         this.baseFee = new BigDecimal(baseFee.toString());
-        this.baseFee = this.baseFee.setScale(DECIMALS);
+        this.baseFee = this.baseFee.setScale(Constants.DECIMALS);
 
         if (powerConsumptionPriceList != null) {
             this.powerConsumptionPriceList = new BigDecimal[powerConsumptionPriceList.length];
             for (int i = 0; i < powerConsumptionPriceList.length; i++) {
                 BigDecimal value = new BigDecimal(powerConsumptionPriceList[i].toString());
-                value = value.setScale(DECIMALS);
+                value = value.setScale(Constants.DECIMALS);
                 this.powerConsumptionPriceList[i] = value;
             }
         }
@@ -105,7 +105,7 @@ public class GenericTariff implements Serializable {
             this.powerProductionPriceList = new BigDecimal[powerProductionPriceList.length];
             for (int i = 0; i < powerProductionPriceList.length; i++) {
                 BigDecimal value = new BigDecimal(powerProductionPriceList[i].toString());
-                value.setScale(DECIMALS);
+                value.setScale(Constants.DECIMALS);
                 this.powerProductionPriceList[i] = value;
             }
         }
@@ -117,16 +117,16 @@ public class GenericTariff implements Serializable {
         this.maximumContractRuntime = maximumContractRuntime;
 
         this.powerConsumptionThreshold = new BigDecimal(powerConsumptionThreshold.toString());
-        this.powerConsumptionThreshold = this.powerConsumptionThreshold.setScale(DECIMALS);
+        this.powerConsumptionThreshold = this.powerConsumptionThreshold.setScale(Constants.DECIMALS);
 
         this.powerConsumptionSurcharge = new BigDecimal(powerConsumptionSurcharge.toString());
-        this.powerConsumptionSurcharge = this.powerConsumptionSurcharge.setScale(DECIMALS);
+        this.powerConsumptionSurcharge = this.powerConsumptionSurcharge.setScale(Constants.DECIMALS);
 
         this.powerProductionThreshold = new BigDecimal(powerProductionThreshold.toString());
-        this.powerProductionThreshold = this.powerProductionThreshold.setScale(DECIMALS);
+        this.powerProductionThreshold = this.powerProductionThreshold.setScale(Constants.DECIMALS);
 
         this.powerProductionSurcharge = new BigDecimal(powerProductionSurcharge.toString());
-        this.powerProductionSurcharge = this.powerProductionSurcharge.setScale(DECIMALS);
+        this.powerProductionSurcharge = this.powerProductionSurcharge.setScale(Constants.DECIMALS);
     }
 
     /*
