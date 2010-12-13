@@ -14,7 +14,7 @@ public interface Customer {
      * @param List<TariffPublishedCommand> tariffPublishList
      * @return A list of possible tariff replies which represent subscriptions or negotiation interactions
      */
-    List<TariffReplyCommand> processTariffList(List<TariffPublish> tariffPublishList);
+    List<TariffReply> processTariffList(List<TariffPublish> tariffPublishList);
 
     MeterReading generateMeterReading(TimeslotChangedCommand timeslotChangedCommand);
 

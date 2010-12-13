@@ -27,7 +27,7 @@ import java.util.Set;
  * Command object that represents a published tariff
  * which is sent out to all customers and all brokers
  * in the competition. Customers may respond send their
- * response as a <code>TariffReplyCommand</code> in order
+ * response as a <code>TariffReply</code> in order
  * to either subscribe to this tariff instance or to
  * start negotiating the conditions.
  * <p/>
@@ -35,7 +35,7 @@ import java.util.Set;
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see TariffReplyCommand, GenericTariff
+ * @see TariffReply , GenericTariff
  */
 public class TariffPublish extends GenericTariff {
 

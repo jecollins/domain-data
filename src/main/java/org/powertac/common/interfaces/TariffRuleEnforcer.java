@@ -1,14 +1,14 @@
 package org.powertac.common.interfaces;
 
-import org.powertac.common.commands.TariffReplyCommand;
+import org.powertac.common.commands.TariffReply;
 
 public interface TariffRuleEnforcer  {
 
     /**
      * Evaluates a given tariff
-     * @param tariffReplyCommand
-     * @return whether tariffReplyCommand is accepted or not
+     * @param tariffReply
+     * @return whether tariffReply is accepted or not
      */
-  public boolean accept(TariffReplyCommand tariffReplyCommand);
+  public boolean accept(TariffReply tariffReply);
 
 }

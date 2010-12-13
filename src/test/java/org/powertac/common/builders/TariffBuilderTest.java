@@ -24,7 +24,7 @@ public class TariffBuilderTest {
 
     @Test
     public void testFromTariff() throws Exception {
-       // TariffReplyCommand tariffReplyCommand = new TariffReplyCommand(TariffState.Finished, 1l, 1.0, 1.0, new Double[]{1.0, 1.0}, new Double[]{0.1, 0.1}, new LocalDateTime(), new LocalDateTime(), 1, 1, 1.0, 1.0, 1.0, 1.0);
+       // TariffReply tariffReplyCommand = new TariffReply(TariffState.Finished, 1l, 1.0, 1.0, new Double[]{1.0, 1.0}, new Double[]{0.1, 0.1}, new LocalDateTime(), new LocalDateTime(), 1, 1, 1.0, 1.0, 1.0, 1.0);
        // TariffPublish tpc = TariffBuilder.fromTariff(tariffReplyCommand).setAuthToken("test").buildTariffPublish();
        // assertEquals("test", tpc.getAuthToken());
        // assertEquals((Long) 1l, tpc.getTariffId());

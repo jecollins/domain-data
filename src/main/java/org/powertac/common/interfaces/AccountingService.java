@@ -35,11 +35,11 @@ public interface AccountingService {
     List<TariffPublish> publishTariffList();
 
     /**
-     * Stores and forwards the tariffReplyCommand to its corresponding broker
-     * @param tariffReplyCommand
-     * @return the identical tariffReplyCommand parameter
+     * Stores and forwards the tariffReply to its corresponding broker
+     * @param tariffReply
+     * @return the identical tariffReply parameter
      */
-    TariffReplyCommand processTariffReply(TariffReplyCommand tariffReplyCommand);
+    TariffReply processTariffReply(TariffReply tariffReply);
 
     /**
      * Stores and forwards the list of customer info
