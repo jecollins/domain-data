@@ -16,7 +16,7 @@ public interface Customer {
      */
     List<TariffReply> processTariffList(List<TariffPublish> tariffPublishList);
 
-    MeterReading generateMeterReading(TimeslotChanged timeslotChanged);
+    MeterReading generateMeterReading(WeatherRealData weatherRealData);
 
     CustomerInfo generateCustomerInfo();
 }

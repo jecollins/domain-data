@@ -21,6 +21,8 @@ package org.powertac.common.commands;
  * @version 0.0.1
  */
 public class WeatherRealData {
+    TimeslotChanged timeslotChanged;
+
     // all data within this class will be shared between the PE module and all other modules within the server
     // and all brokers
 }
