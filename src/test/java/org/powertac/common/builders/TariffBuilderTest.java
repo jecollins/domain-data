@@ -30,8 +30,8 @@ public class TariffBuilderTest {
 
     @Test
     public void testFromTariff() throws Exception {
-       TariffReplyCommand tariffReplyCommand = new TariffReplyCommand(TariffState.Finished, 1l, 1.0, 1.0, new Double[]{1.0, 1.0}, new Double[]{0.1, 0.1}, new LocalDateTime(), new LocalDateTime(), 1, 1, 1.0, 1.0, 1.0, 1.0);
-       TariffPublishCommand tpc = TariffBuilder.fromTariff(tariffReplyCommand).setAuthToken("test").buildTariffPublishCommand();
+       TariffReply TariffReply = new TariffReply(TariffState.Finished, 1l, 1.0, 1.0, new Double[]{1.0, 1.0}, new Double[]{0.1, 0.1}, new LocalDateTime(), new LocalDateTime(), 1, 1, 1.0, 1.0, 1.0, 1.0);
+       TariffPublish tpc = TariffBuilder.fromTariff(TariffReply).setAuthToken("test").buildTariffPublish();
        assertEquals("test", tpc.getAuthToken());
        assertEquals((Long) 1l, tpc.getTariffId());
     }
@@ -52,12 +52,12 @@ public class TariffBuilderTest {
     }
 
     @Test
-    public void testBuildTariffReplyCommand() throws Exception {
+    public void testBuildTariffReply() throws Exception {
 
     }
 
     @Test
-    public void testBuildTariffPublishCommand() throws Exception {
+    public void testBuildTariffPublish() throws Exception {
 
     }
 }
