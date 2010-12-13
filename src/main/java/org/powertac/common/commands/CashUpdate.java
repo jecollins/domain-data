@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 
 /**
  * Command object that represents an cash transaction
- * (add / dewduce money) that should be executed on a
+ * (add / deduce money) that should be executed on a
  * specific broker cash account for a given reason.
  *
  * @author Carsten Block
@@ -31,10 +31,6 @@ import java.math.BigDecimal;
 public class CashUpdate extends AbstractCash {
 
     private static final long serialVersionUID = 1865147840672112686L;
-
-    public CashUpdate() {
-        super();
-    }
 
     public CashUpdate(Broker broker, BigDecimal moneyChange, String reason, String origin) {
         super(broker, moneyChange, reason, origin);

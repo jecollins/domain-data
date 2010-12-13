@@ -16,31 +16,30 @@
 
 package org.powertac.common.commands;
 
+import org.powertac.common.Constants;
 import org.powertac.common.interfaces.Broker;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * Command object that represents an abstract cash transaction
- * (add / deduce money) to be executed on a specific
- * broker cash account for a given reason.
+ * Abstract command object that contains common cash properties
+ *
+ * Please use <code>CashBuilder</code> to create appropriate
+ * Cash instances.
  *
  * @author Carsten Block
  * @version 1.0, Date: 02.12.10
+ * @see CashChanged, CashUpdate
  */
-public class AbstractCash implements Serializable {
+public abstract class AbstractCash implements Serializable {
 
     private static final long serialVersionUID = 9051838018541279797L;
 
-    Broker broker;
-    BigDecimal moneyChange;
-    String reason;
-    String origin;
-
-    public AbstractCash() {
-
-    }
+    private Broker broker;
+    private BigDecimal moneyChange;
+    private String reason;
+    private String origin;
 
     public AbstractCash(Broker broker, BigDecimal moneyChange, String reason, String origin) {
         this.broker = broker;
@@ -51,9 +50,13 @@ public class AbstractCash implements Serializable {
 
     public AbstractCash(Broker broker, Double moneyChange, String reason, String origin) {
         this.broker = broker;
-        BigDecimal value = new BigDecimal(moneyChange);
-        value = value.setScale(2);
-        this.moneyChange = value;
+        if (moneyChange == null) {
+            this.moneyChange = null;
+        } else {
+            BigDecimal value = new BigDecimal(moneyChange);
+            value = value.setScale(Constants.DECIMALS, Constants.ROUNDING_MODE);
+            this.moneyChange = value;
+        }
         this.reason = reason;
         this.origin = origin;
     }
