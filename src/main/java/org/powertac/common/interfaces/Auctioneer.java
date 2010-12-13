@@ -1,6 +1,6 @@
 package org.powertac.common.interfaces;
 
-import org.powertac.common.commands.ShoutChangedCommand;
+import org.powertac.common.commands.ShoutChanged;
 import org.powertac.common.commands.ShoutCreateCommand;
 import org.powertac.common.commands.ShoutDeleteCommand;
 import org.powertac.common.commands.ShoutUpdateCommand;
@@ -28,8 +28,8 @@ public interface Auctioneer {
    * process these objects futher downstream in the channel.
    *
    * @param shoutCreateCommand new incoming shout from a broker
-   * @return List of objects, which might include <code>DepotUpdate</code>, <code>CashUpdate</code>, <code>OrderbookChanged</code>,<code>QuoteChanged</code>,<code>TradeOccurredCommand</code>,<code>ShoutChangedCommand</code>
-   * @see org.powertac.common.commands.DepotUpdate , CashUpdate, OrderbookChanged, QuoteChanged, TradeOccurredCommand, ShoutChangedCommand
+   * @return List of objects, which might include <code>DepotUpdate</code>, <code>CashUpdate</code>, <code>OrderbookChanged</code>,<code>QuoteChanged</code>,<code>TradeOccurredCommand</code>,<code>ShoutChanged</code>
+   * @see org.powertac.common.commands.DepotUpdate , CashUpdate, OrderbookChanged, QuoteChanged, TradeOccurredCommand, ShoutChanged
    */
   List processShoutCreate(ShoutCreateCommand shoutCreateCommand);
 
@@ -38,8 +38,8 @@ public interface Auctioneer {
    * @param shoutDeleteCommand command object that contains the shoutId that should be deleted
    * @return ShoutChangedCommand object that contains the new status of the deleted shout
    */
-  ShoutChangedCommand processShoutDelete(ShoutDeleteCommand shoutDeleteCommand);
+  ShoutChanged processShoutDelete(ShoutDeleteCommand shoutDeleteCommand);
 
-  ShoutChangedCommand processShoutUpdate(ShoutUpdateCommand shoutUpdateCommand);
+  ShoutChanged processShoutUpdate(ShoutUpdateCommand shoutUpdateCommand);
 
 }
