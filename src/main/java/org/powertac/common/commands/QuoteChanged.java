@@ -7,7 +7,7 @@ import org.powertac.common.interfaces.Timeslot;
 import java.math.BigDecimal;
 
 /**
- * A QuoteChangedCommand essentially represents
+ * A QuoteChanged essentially represents
  * an orderbook state up to the depth of 1 order on
  * the buy and sell side.
  *
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * @version 1.0, Date: 01.12.10
  * @see OrderbookChanged
  */
-public class QuoteChangedCommand {
+public class QuoteChanged {
   LocalDateTime dateCreated;
     Long transactionID;
     Timeslot timeslot;
