@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * Date: 01.12.10
  * Time: 16:45
  */
-public class DepotUpdateCommand {
+public class DepotUpdate {
   Broker broker;
   Product product;
   BigDecimal depotChange;
