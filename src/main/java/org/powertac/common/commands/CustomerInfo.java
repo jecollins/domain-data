@@ -1,5 +1,5 @@
 package org.powertac.common.commands;
 
-public class CustomerInfoCommand {
+public class CustomerInfo {
 
 }

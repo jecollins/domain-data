@@ -43,8 +43,8 @@ public interface AccountingService {
 
     /**
      * Stores and forwards the list of customer info
-     * @return the identical customerInfoCommands parameter
+     * @return the identical customerInfo parameter
      */
-    List<CustomerInfoCommand> processCustomerInfo(List<CustomerInfoCommand> customerInfoCommands);
+    List<CustomerInfo> processCustomerInfo(List<CustomerInfo> customerInfo);
 
 }
