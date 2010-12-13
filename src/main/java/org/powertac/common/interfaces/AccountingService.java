@@ -32,7 +32,7 @@ public interface AccountingService {
      *
      * @return a list of all active tariffs
      */
-    List<TariffPublishCommand> publishTariffList();
+    List<TariffPublish> publishTariffList();
 
     /**
      * Stores and forwards the tariffReplyCommand to its corresponding broker

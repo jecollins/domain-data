@@ -17,7 +17,7 @@
 package org.powertac.common.builders;
 
 import org.powertac.common.commands.GenericTariff;
-import org.powertac.common.commands.TariffPublishCommand;
+import org.powertac.common.commands.TariffPublish;
 import org.powertac.common.commands.TariffReplyCommand;
 import org.powertac.common.enumerations.CustomerType;
 import org.powertac.common.enumerations.TariffState;
@@ -71,7 +71,7 @@ public class TariffBuilder {
         return new TariffReplyCommand(this.genericTariff, this.tariffState);
     }
 
-    public TariffPublishCommand buildTariffPublishCommand() {
-        return new TariffPublishCommand(this.permittedCustomerTypes, this.authToken, this.genericTariff);
+    public TariffPublish buildTariffPublish() {
+        return new TariffPublish(this.permittedCustomerTypes, this.authToken, this.genericTariff);
     }
 }

@@ -30,7 +30,7 @@ import java.math.BigDecimal;
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see TariffPublishCommand, GenericTariff
+ * @see TariffPublish , GenericTariff
  */
 public class TariffReplyCommand extends GenericTariff {
 
