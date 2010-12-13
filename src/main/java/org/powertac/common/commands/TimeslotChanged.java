@@ -18,8 +18,6 @@ package org.powertac.common.commands;
 
 import org.joda.time.LocalDateTime;
 
-import java.io.Serializable;
-
 /**
  * Command object that represents an updated timeslot.
  *
@@ -27,9 +25,9 @@ import java.io.Serializable;
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see AbstractTimeslotCommand, TimeslotCreated
+ * @see AbstractTimeslot , TimeslotCreated
  */
-public class TimeslotChanged extends AbstractTimeslotCommand {
+public class TimeslotChanged extends AbstractTimeslot {
 
     private static final long serialVersionUID = -1312243299103119351L;
 

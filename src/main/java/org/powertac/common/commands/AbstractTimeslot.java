@@ -30,7 +30,7 @@ import java.io.Serializable;
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
  */
-public abstract class AbstractTimeslotCommand implements Serializable {
+public abstract class AbstractTimeslot implements Serializable {
 
     private static final long serialVersionUID = -5259785412810528138L;
 
@@ -39,7 +39,7 @@ public abstract class AbstractTimeslotCommand implements Serializable {
     LocalDateTime endDate;
     Boolean enabled;
 
-    public AbstractTimeslotCommand(Long timeslotId, LocalDateTime startDate, LocalDateTime endDate, Boolean enabled) {
+    public AbstractTimeslot(Long timeslotId, LocalDateTime startDate, LocalDateTime endDate, Boolean enabled) {
         this.timeslotId = timeslotId;
         this.startDate = startDate;
         this.endDate = endDate;
