@@ -16,7 +16,7 @@ public interface Customer {
      */
     List<TariffReplyCommand> processTariffList(List<TariffPublishCommand> tariffPublishCommandList);
 
-    MeterReadingCommand generateMeterReading(TimeslotChangedCommand timeslotChangedCommand);
+    MeterReading generateMeterReading(TimeslotChangedCommand timeslotChangedCommand);
 
     CustomerInfo generateCustomerInfo();
 }

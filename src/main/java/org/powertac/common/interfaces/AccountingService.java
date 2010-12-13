@@ -9,10 +9,10 @@ public interface AccountingService {
     /**
      * Save individual meter reading on a customer basis
      * and calculate meter reading balance
-     * @param meterReadingCommandList
+     * @param meterReadingList
      * @return List<MeterReadingBalanceCommand> a list of meter reading balances per broker
      */
-    List<MeterReadingBalance> processMeterReadings(List<MeterReadingCommand> meterReadingCommandList);
+    List<MeterReadingBalance> processMeterReadings(List<MeterReading> meterReadingList);
 
     /**
      *

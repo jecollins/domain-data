@@ -6,7 +6,7 @@ import org.powertac.common.interfaces.Timeslot;
 import java.math.BigDecimal;
 
 
-public class MeterReadingCommand {
+public class MeterReading {
   Customer customer;
   Timeslot timeslot;
   BigDecimal meterReading;
