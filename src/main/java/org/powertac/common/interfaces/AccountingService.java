@@ -12,7 +12,7 @@ public interface AccountingService {
      * @param meterReadingCommandList
      * @return List<MeterReadingBalanceCommand> a list of meter reading balances per broker
      */
-    List<MeterReadingBalanceCommand> processMeterReadings(List<MeterReadingCommand> meterReadingCommandList);
+    List<MeterReadingBalance> processMeterReadings(List<MeterReadingCommand> meterReadingCommandList);
 
     /**
      *

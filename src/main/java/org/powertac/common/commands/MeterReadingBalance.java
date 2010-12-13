@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * Date: 01.12.10
  * Time: 16:36
  */
-public class MeterReadingBalanceCommand {
+public class MeterReadingBalance {
   Broker broker;
   Timeslot timeslot;
   BigDecimal meterReading;
