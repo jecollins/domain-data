@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * Date: 01.12.10
  * Time: 16:45
  */
-public class DepotChangedCommand {
+public class DepotChanged {
   Broker broker;
   Product product;
   Long transactionId;

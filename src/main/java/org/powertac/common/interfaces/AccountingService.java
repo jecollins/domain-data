@@ -17,9 +17,9 @@ public interface AccountingService {
     /**
      *
      * @param depotUpdateCommand
-     * @return DepotChangedCommand Latest DepotChangedCommand which contains change, balance and reason
+     * @return DepotChangedCommand Latest DepotChanged which contains change, balance and reason
      */
-    DepotChangedCommand processDepotUpdate(DepotUpdateCommand depotUpdateCommand);
+    DepotChanged processDepotUpdate(DepotUpdateCommand depotUpdateCommand);
 
     /**
      *
