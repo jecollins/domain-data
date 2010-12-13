@@ -1,5 +1,7 @@
 package org.powertac.common;
 
+import java.math.RoundingMode;
+
 /**
  * This class contains constant definitions used throughout
  * the project.
@@ -12,5 +14,6 @@ public class Constants {
      * DECIMALS constant is used to set the common decimal scaling in
      * BigDecimal numbers; for powertac this is set to 2 decimal digits
      */
-    public static final int DECIMALS = 2;
+    public static final int DECIMALS = 4;
+    public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 }
