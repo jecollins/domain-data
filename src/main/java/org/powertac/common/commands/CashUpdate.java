@@ -28,19 +28,19 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 02.12.10
  */
-public class CashUpdateCommand extends AbstractCashCommand {
+public class CashUpdate extends AbstractCashCommand {
 
     private static final long serialVersionUID = 1865147840672112686L;
 
-    public CashUpdateCommand() {
+    public CashUpdate() {
         super();
     }
 
-    public CashUpdateCommand(Broker broker, BigDecimal moneyChange, String reason, String origin) {
+    public CashUpdate(Broker broker, BigDecimal moneyChange, String reason, String origin) {
         super(broker, moneyChange, reason, origin);
     }
 
-    public CashUpdateCommand(Broker broker, Double moneyChange, String reason, String origin) {
+    public CashUpdate(Broker broker, Double moneyChange, String reason, String origin) {
         super(broker, moneyChange, reason, origin);
     }
 

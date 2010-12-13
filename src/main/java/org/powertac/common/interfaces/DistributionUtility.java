@@ -15,7 +15,7 @@ public interface DistributionUtility {
     /**
      *
      * @param meterReadingBalanceCommands
-     * @return a list of DepotUpdateCommand and CashUpdateCommand objects
+     * @return a list of DepotUpdateCommand and CashUpdate objects
      */
     List processMeterReadingBalances(List<MeterReadingBalanceCommand> meterReadingBalanceCommands);
 

@@ -23,10 +23,10 @@ public interface AccountingService {
 
     /**
      *
-     * @param cashUpdateCommand
+     * @param cashUpdate
      * @return CashChangedCommand Latest CashChanged which contains change, balance and reason
      */
-    CashChanged processCashUpdate(CashUpdateCommand cashUpdateCommand);
+    CashChanged processCashUpdate(CashUpdate cashUpdate);
 
     /**
      *
