@@ -41,8 +41,9 @@ public interface PhysicalEnvironment {
 
     /**
      * Generates and returns weather forecasts for every enabled timeslot
+     * The module is responsible for retrieving all enabled timeslots
      *
-     * @param currentTimeslot the changed timeslot
+     * @param currentTimeslot the current timeslot
      * @return a list of weather forecast objects
      */
     List<WeatherForecastData> generateForecastWeatherData(TimeslotChanged currentTimeslot);
