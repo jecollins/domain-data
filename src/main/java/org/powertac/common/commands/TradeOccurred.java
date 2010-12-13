@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
  */
-public class TradeOccurredCommand {
+public class TradeOccurred {
   Timeslot timeslot;
   Product product;
   BigDecimal price;

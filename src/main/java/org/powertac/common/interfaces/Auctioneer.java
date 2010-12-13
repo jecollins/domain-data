@@ -28,8 +28,8 @@ public interface Auctioneer {
    * process these objects futher downstream in the channel.
    *
    * @param shoutCreate new incoming shout from a broker
-   * @return List of objects, which might include <code>DepotUpdate</code>, <code>CashUpdate</code>, <code>OrderbookChanged</code>,<code>QuoteChanged</code>,<code>TradeOccurredCommand</code>,<code>ShoutChanged</code>
-   * @see org.powertac.common.commands.DepotUpdate , CashUpdate, OrderbookChanged, QuoteChanged, TradeOccurredCommand, ShoutChanged
+   * @return List of objects, which might include <code>DepotUpdate</code>, <code>CashUpdate</code>, <code>OrderbookChanged</code>,<code>QuoteChanged</code>,<code>TradeOccurred</code>,<code>ShoutChanged</code>
+   * @see org.powertac.common.commands.DepotUpdate , CashUpdate, OrderbookChanged, QuoteChanged, TradeOccurred, ShoutChanged
    */
   List processShoutCreate(ShoutCreate shoutCreate);
 
