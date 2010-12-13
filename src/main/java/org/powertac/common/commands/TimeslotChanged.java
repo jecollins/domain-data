@@ -27,7 +27,7 @@ import java.io.Serializable;
  *
  * @author Carsten Block
  * @version 1.0, Date: 01.12.10
- * @see AbstractTimeslotCommand, TimeslotCreatedCommand
+ * @see AbstractTimeslotCommand, TimeslotCreated
  */
 public class TimeslotChanged extends AbstractTimeslotCommand {
 

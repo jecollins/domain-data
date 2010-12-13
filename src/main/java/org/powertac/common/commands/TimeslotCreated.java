@@ -30,11 +30,11 @@ import java.io.Serializable;
  * @version 1.0, Date: 01.12.10
  * @see AbstractTimeslotCommand, TimeslotChanged
  */
-public class TimeslotCreatedCommand extends AbstractTimeslotCommand {
+public class TimeslotCreated extends AbstractTimeslotCommand {
 
     private static final long serialVersionUID = 2795655318065268694L;
 
-    protected TimeslotCreatedCommand(Long timeslotId, LocalDateTime startDate, LocalDateTime endDate, Boolean enabled) {
+    protected TimeslotCreated(Long timeslotId, LocalDateTime startDate, LocalDateTime endDate, Boolean enabled) {
         super(timeslotId, startDate, endDate, enabled);
     }
 }
