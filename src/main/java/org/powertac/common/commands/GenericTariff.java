@@ -85,7 +85,7 @@ public class GenericTariff implements Serializable {
 
     public GenericTariff(Long tariffId, Double signupFee, Double baseFee, Double[] powerConsumptionPriceList, Double[] powerProductionPriceList, LocalDateTime contractStartDate, LocalDateTime contractEndDate, Integer minimumContractRuntime, Integer maximumContractRuntime, Double powerConsumptionThreshold, Double powerConsumptionSurcharge, Double powerProductionThreshold, Double powerProductionSurcharge) {
 
-            this.tariffId = tariffId;
+        this.tariffId = tariffId;
 
         this.signupFee = new BigDecimal(signupFee.toString()); //Note: constructing BigDecimal from the double's String representation: see http://download.oracle.com/javase/1.5.0/docs/api/java/math/BigDecimal.html
         this.signupFee = this.signupFee.setScale(Constants.DECIMALS);
@@ -105,7 +105,7 @@ public class GenericTariff implements Serializable {
             this.powerProductionPriceList = new BigDecimal[powerProductionPriceList.length];
             for (int i = 0; i < powerProductionPriceList.length; i++) {
                 BigDecimal value = new BigDecimal(powerProductionPriceList[i].toString());
-                value.setScale(Constants.DECIMALS);
+                value = value.setScale(Constants.DECIMALS);
                 this.powerProductionPriceList[i] = value;
             }
         }
