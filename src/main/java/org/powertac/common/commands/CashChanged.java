@@ -19,7 +19,6 @@ package org.powertac.common.commands;
 import org.joda.time.LocalDateTime;
 import org.powertac.common.interfaces.Broker;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -30,7 +29,7 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 02.12.10
  */
-public class CashChanged extends AbstractCashCommand {
+public class CashChanged extends AbstractCash {
 
     private static final long serialVersionUID = -2283491588688754258L;
 

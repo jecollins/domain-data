@@ -29,7 +29,7 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 02.12.10
  */
-public class AbstractCashCommand implements Serializable {
+public class AbstractCash implements Serializable {
 
     private static final long serialVersionUID = 9051838018541279797L;
 
@@ -38,18 +38,18 @@ public class AbstractCashCommand implements Serializable {
     String reason;
     String origin;
 
-    public AbstractCashCommand() {
+    public AbstractCash() {
 
     }
 
-    public AbstractCashCommand(Broker broker, BigDecimal moneyChange, String reason, String origin) {
+    public AbstractCash(Broker broker, BigDecimal moneyChange, String reason, String origin) {
         this.broker = broker;
         this.moneyChange = moneyChange;
         this.reason = reason;
         this.origin = origin;
     }
 
-    public AbstractCashCommand(Broker broker, Double moneyChange, String reason, String origin) {
+    public AbstractCash(Broker broker, Double moneyChange, String reason, String origin) {
         this.broker = broker;
         BigDecimal value = new BigDecimal(moneyChange);
         value = value.setScale(2);

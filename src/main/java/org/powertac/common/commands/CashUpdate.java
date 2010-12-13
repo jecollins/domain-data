@@ -28,7 +28,7 @@ import java.math.BigDecimal;
  * @author Carsten Block
  * @version 1.0, Date: 02.12.10
  */
-public class CashUpdate extends AbstractCashCommand {
+public class CashUpdate extends AbstractCash {
 
     private static final long serialVersionUID = 1865147840672112686L;
 
