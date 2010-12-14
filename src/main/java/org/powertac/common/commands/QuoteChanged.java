@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  */
 public class QuoteChanged {
   LocalDateTime dateCreated;
-    Long transactionID;
+    Long transactionId;
     Long timeslotId;
     Long productId;
     BigDecimal bid = null;

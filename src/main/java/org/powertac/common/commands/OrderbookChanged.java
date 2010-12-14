@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  */
 public class OrderbookChanged {
     LocalDateTime dateCreated;
-    Long transactionID;
+    Long transactionId;
     Long timeslotId;
     Long productId;
     BigDecimal bid0 = null;
