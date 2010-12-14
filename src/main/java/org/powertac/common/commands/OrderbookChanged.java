@@ -1,8 +1,6 @@
 package org.powertac.common.commands;
 
 import org.joda.time.LocalDateTime;
-import org.powertac.common.interfaces.Product;
-import org.powertac.common.interfaces.Timeslot;
 
 import java.math.BigDecimal;
 
@@ -17,8 +15,8 @@ import java.math.BigDecimal;
 public class OrderbookChanged {
     LocalDateTime dateCreated;
     Long transactionID;
-    Timeslot timeslot;
-    Product product;
+    Long timeslotId;
+    Long productId;
     BigDecimal bid0 = null;
     BigDecimal bid1 = null;
     BigDecimal bid3 = null;

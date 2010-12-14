@@ -1,8 +1,5 @@
 package org.powertac.common.commands;
 
-import org.powertac.common.interfaces.Product;
-import org.powertac.common.interfaces.Timeslot;
-
 import java.math.BigDecimal;
 
 /**
@@ -13,8 +10,8 @@ import java.math.BigDecimal;
  * @version 1.0, Date: 01.12.10
  */
 public class TradeOccurred {
-  Timeslot timeslot;
-  Product product;
+  Long timeslotId;
+  Long productId;
   BigDecimal price;
   BigDecimal quantity;
 }

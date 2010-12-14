@@ -18,7 +18,6 @@ package org.powertac.common.commands;
 
 import org.joda.time.LocalDateTime;
 import org.powertac.common.Constants;
-import org.powertac.common.interfaces.Broker;
 
 import java.math.BigDecimal;
 

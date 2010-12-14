@@ -1,8 +1,5 @@
 package org.powertac.common.commands;
 
-import org.powertac.common.interfaces.Broker;
-import org.powertac.common.interfaces.Product;
-
 import java.math.BigDecimal;
 
 /**
@@ -11,8 +8,8 @@ import java.math.BigDecimal;
  * Time: 16:45
  */
 public class DepotUpdate {
-  Broker broker;
-  Product product;
+  Long brokerId;
+  Long productId;
   BigDecimal depotChange;
   String reason;
   String origin; //the person or entity that caused the update

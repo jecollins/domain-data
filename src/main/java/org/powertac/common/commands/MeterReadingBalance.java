@@ -1,8 +1,5 @@
 package org.powertac.common.commands;
 
-import org.powertac.common.interfaces.Broker;
-import org.powertac.common.interfaces.Timeslot;
-
 import java.math.BigDecimal;
 
 /**
@@ -11,7 +8,7 @@ import java.math.BigDecimal;
  * Time: 16:36
  */
 public class MeterReadingBalance {
-  Broker broker;
-  Timeslot timeslot;
+  Long brokerId;
+  Long timeslotId;
   BigDecimal meterReading;
 }

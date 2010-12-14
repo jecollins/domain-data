@@ -23,7 +23,6 @@ import org.junit.Test;
 import org.powertac.common.Constants;
 import org.powertac.common.commands.CashChanged;
 import org.powertac.common.commands.CashUpdate;
-import org.powertac.common.interfaces.Broker;
 
 import java.math.BigDecimal;
 
@@ -68,7 +67,7 @@ public class CashBuilderTest {
 
     @Test
     public void testWithCashChanged() throws Exception {
-        Broker bob = null;
+        Long brokerId = 10l;
         Double moneyChange = .1; //specifically use .1 as this cannot represented as a finite double number during conversion into BigDecimal
         String reason = "No reason";
         String origin = "No origin";
@@ -76,12 +75,12 @@ public class CashBuilderTest {
         Double balance = 10.1;
         LocalDateTime dateTime = new LocalDateTime();
 
-        CashChanged originalCashChanged = new CashChanged(null, moneyChange, reason, origin, transactionId, balance, dateTime);
+        CashChanged originalCashChanged = new CashChanged(brokerId, moneyChange, reason, origin, transactionId, balance, dateTime);
 
         //generate new originalCashChanged object based on existing originalCashChanged object
         CashChanged newCashChanged = CashBuilder.withCashChanged(originalCashChanged).buildCashChanged();
         assertNotSame(originalCashChanged, newCashChanged);
-        assertEquals(null, newCashChanged.getBrokerId());
+        assertEquals(brokerId, newCashChanged.getBrokerId());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), newCashChanged.getMoneyChange()); //use String constructor for BigDecimal as adviced in JDK docs
         assertEquals(reason, newCashChanged.getReason());
         assertEquals(origin, newCashChanged.getOrigin());
@@ -91,7 +90,7 @@ public class CashBuilderTest {
 
         //generate new cashUpdate object based on existing cashUpdate object
         CashUpdate newCashUpdate = CashBuilder.withCashChanged(originalCashChanged).buildCashUpdate();
-        assertEquals(null, newCashUpdate.getBrokerId());
+        assertEquals(brokerId, newCashUpdate.getBrokerId());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), newCashUpdate.getMoneyChange()); //use String constructor for BigDecimal as adviced in JDK docs
         assertEquals(reason, newCashUpdate.getReason());
         assertEquals(origin, newCashUpdate.getOrigin());
@@ -99,7 +98,7 @@ public class CashBuilderTest {
 
     @Test
     public void testWithCashUpdate() throws Exception {
-        Broker bob = null;
+        Long brokerId = 1l;
         Double moneyChange = .1; //specifically use .1 as this cannot represented as a finite double number during conversion into BigDecimal
         String reason = "No reason";
         String origin = "No origin";
@@ -107,19 +106,19 @@ public class CashBuilderTest {
         Double balance = 10.1;
         LocalDateTime dateTime = new LocalDateTime();
 
-        CashUpdate originalCashUpdate = new CashUpdate(null, moneyChange, reason, origin);
+        CashUpdate originalCashUpdate = new CashUpdate(brokerId, moneyChange, reason, origin);
 
         //generate new CashUpdate object based on existing originalCashUpdate object
         CashUpdate newCashUpdate = CashBuilder.withCashUpdate(originalCashUpdate).buildCashUpdate();
         assertNotSame(originalCashUpdate, newCashUpdate);
-        assertEquals(null, newCashUpdate.getBrokerId());
+        assertEquals(brokerId, newCashUpdate.getBrokerId());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), newCashUpdate.getMoneyChange()); //use String constructor for BigDecimal as adviced in JDK docs
         assertEquals(reason, newCashUpdate.getReason());
         assertEquals(origin, newCashUpdate.getOrigin());
 
         //generate new CashChanged object based on existing originalCashUpdate object
         CashChanged newCashChanged = CashBuilder.withCashUpdate(originalCashUpdate).buildCashChanged();
-        assertEquals(null, newCashChanged.getBrokerId());
+        assertEquals(brokerId, newCashChanged.getBrokerId());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), newCashChanged.getMoneyChange()); //use String constructor for BigDecimal as adviced in JDK docs
         assertEquals(reason, newCashChanged.getReason());
         assertEquals(origin, newCashChanged.getOrigin());
@@ -179,8 +178,8 @@ public class CashBuilderTest {
 
     @Test
     public void testSetBalance() throws Exception {
-        assertNull(CashBuilder.withEmpty().setBalance((Double)null).buildCashChanged().getBalance());
-        assertNull(CashBuilder.withEmpty().setBalance((BigDecimal)null).buildCashChanged().getBalance());
+        assertNull(CashBuilder.withEmpty().setBalance((Double) null).buildCashChanged().getBalance());
+        assertNull(CashBuilder.withEmpty().setBalance((BigDecimal) null).buildCashChanged().getBalance());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), CashBuilder.withEmpty().setBalance(0.1).buildCashChanged().getBalance());
 
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), CashBuilder.withEmpty().setBalance(new BigDecimal("0.1")).buildCashChanged().getBalance());
