@@ -30,7 +30,7 @@ import java.math.BigDecimal;
  * using method chaning.
  * <p/>
  * Example: <code>CashBuilder
- * .withCash(cashChangedInstance)
+ * .withCashChanged(cashChangedInstance)
  * .setBalance(100.0)
  * .buildCashUpdate()</code>
  *
