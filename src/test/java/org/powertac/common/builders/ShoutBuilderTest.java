@@ -219,90 +219,126 @@ public class ShoutBuilderTest {
     assertNull(ShoutBuilder.withEmpty().setAuthToken(null).buildShoutCreate().getAuthToken());
     assertNull(ShoutBuilder.withEmpty().setAuthToken(null).buildShoutDelete().getAuthToken());
     assertNull(ShoutBuilder.withEmpty().setAuthToken(null).buildShoutUpdate().getAuthToken());
+
+    assertEquals("test", ShoutBuilder.withEmpty().setAuthToken("test").buildShoutCreate().getAuthToken());
+    assertEquals("test", ShoutBuilder.withEmpty().setAuthToken("test").buildShoutDelete().getAuthToken());
+    assertEquals("test", ShoutBuilder.withEmpty().setAuthToken("test").buildShoutUpdate().getAuthToken());
   }
 
   @Test
   public void testSetTimeslotId() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setTimeslotId(null).buildShoutCreate().getTimeslotId());
+    assertNull(ShoutBuilder.withEmpty().setTimeslotId(null).buildShoutChanged().getTimeslotId());
 
+    assertEquals((Long) 1l, ShoutBuilder.withEmpty().setTimeslotId(1l).buildShoutCreate().getTimeslotId());
+    assertEquals((Long) 1l, ShoutBuilder.withEmpty().setTimeslotId(1l).buildShoutChanged().getTimeslotId());
   }
 
   @Test
   public void testSetProductId() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setProductId(null).buildShoutCreate().getProductId());
+    assertNull(ShoutBuilder.withEmpty().setProductId(null).buildShoutChanged().getProductId());
 
+    assertEquals((Long) 1l, ShoutBuilder.withEmpty().setProductId(1l).buildShoutCreate().getProductId());
+    assertEquals((Long) 1l, ShoutBuilder.withEmpty().setProductId(1l).buildShoutChanged().getProductId());
   }
 
   @Test
   public void testSetShoutId() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setShoutId(null).buildShoutChanged().getShoutId());
+    assertNull(ShoutBuilder.withEmpty().setShoutId(null).buildShoutDelete().getShoutId());
+    assertNull(ShoutBuilder.withEmpty().setShoutId(null).buildShoutUpdate().getShoutId());
 
+    assertEquals((Long) 1l, ShoutBuilder.withEmpty().setShoutId(1l).buildShoutChanged().getShoutId());
+    assertEquals((Long) 1l, ShoutBuilder.withEmpty().setShoutId(1l).buildShoutDelete().getShoutId());
+    assertEquals((Long) 1l, ShoutBuilder.withEmpty().setShoutId(1l).buildShoutUpdate().getShoutId());
   }
 
   @Test
   public void testSetTransactionId() throws Exception {
-
+    assertNull(ShoutBuilder.withEmpty().setTransactionId(null).buildShoutChanged().getTransactionId());
+    assertEquals((Long) 1l, ShoutBuilder.withEmpty().setTransactionId(1l).buildShoutChanged().getTransactionId());
   }
 
   @Test
   public void testSetBuySellIndicator() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setBuySellIndicator(null).buildShoutChanged().getBuySellIndicator());
+    assertNull(ShoutBuilder.withEmpty().setBuySellIndicator(null).buildShoutCreate().getBuySellIndicator());
 
+    assertEquals(BuySellIndicator.SELL, ShoutBuilder.withEmpty().setBuySellIndicator(BuySellIndicator.SELL).buildShoutChanged().getBuySellIndicator());
+    assertEquals(BuySellIndicator.SELL, ShoutBuilder.withEmpty().setBuySellIndicator(BuySellIndicator.SELL).buildShoutCreate().getBuySellIndicator());
   }
 
   @Test
   public void testSetQuantity() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setQuantity((Double) null).buildShoutChanged().getQuantity());
+    assertNull(ShoutBuilder.withEmpty().setQuantity((Double) null).buildShoutCreate().getQuantity());
+    assertNull(ShoutBuilder.withEmpty().setQuantity((Double) null).buildShoutUpdate().getQuantity());
 
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setQuantity(0.1).buildShoutChanged().getQuantity());
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setQuantity(0.1).buildShoutCreate().getQuantity());
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setQuantity(0.1).buildShoutUpdate().getQuantity());
   }
 
   @Test
   public void testSetLimitPrice() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setLimitPrice((Double) null).buildShoutCreate().getLimitPrice());
+    assertNull(ShoutBuilder.withEmpty().setLimitPrice((Double) null).buildShoutUpdate().getLimitPrice());
+    assertNull(ShoutBuilder.withEmpty().setLimitPrice((Double) null).buildShoutChanged().getLimitPrice());
 
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setLimitPrice(0.1).buildShoutChanged().getLimitPrice());
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setLimitPrice(0.1).buildShoutCreate().getLimitPrice());
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setLimitPrice(0.1).buildShoutUpdate().getLimitPrice());
   }
 
   @Test
   public void testSetOrderType() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setOrderType(null).buildShoutChanged().getOrderType());
+    assertNull(ShoutBuilder.withEmpty().setOrderType(null).buildShoutCreate().getOrderType());
 
+    assertEquals(OrderType.LIMIT, ShoutBuilder.withEmpty().setOrderType(OrderType.LIMIT).buildShoutChanged().getOrderType());
+    assertEquals(OrderType.LIMIT, ShoutBuilder.withEmpty().setOrderType(OrderType.LIMIT).buildShoutCreate().getOrderType());
   }
 
   @Test
   public void testSetRemainingQuantity() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setRemainingQuantity((Double) null).buildShoutChanged().getLimitPrice());
 
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setRemainingQuantity(0.1).buildShoutChanged().getRemainingQuantity());
   }
 
   @Test
   public void testSetExecutionQuantity() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setExecutionQuantity((Double) null).buildShoutChanged().getExecutionQuantity());
 
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setExecutionQuantity(0.1).buildShoutChanged().getExecutionQuantity());
   }
 
   @Test
   public void testSetExecutionPrice() throws Exception {
+     assertNull(ShoutBuilder.withEmpty().setExecutionPrice((Double) null).buildShoutChanged().getExecutionPrice());
 
+    assertEquals(new BigDecimal("0.1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), ShoutBuilder.withEmpty().setExecutionPrice(0.1).buildShoutChanged().getExecutionPrice());
   }
 
   @Test
   public void testSetDateCreated() throws Exception {
-
+    assertNull(ShoutBuilder.withEmpty().setDateCreated(null).buildShoutChanged().getDateCreated());
+    LocalDateTime dateTime = new LocalDateTime();
+    assertEquals(dateTime, ShoutBuilder.withEmpty().setDateCreated(dateTime).buildShoutChanged().getDateCreated());
   }
 
   @Test
   public void testSetLastUpdated() throws Exception {
-
+    assertNull(ShoutBuilder.withEmpty().setLastUpdated(null).buildShoutChanged().getLastUpdated());
+    LocalDateTime dateTime = new LocalDateTime();
+    assertEquals(dateTime, ShoutBuilder.withEmpty().setLastUpdated(dateTime).buildShoutChanged().getLastUpdated());
   }
 
   @Test
   public void testSetModReasonCode() throws Exception {
-
-  }
-
-  @Test
-  public void testBuildShoutChanged() throws Exception {
-
-  }
-
-  @Test
-  public void testBuildShoutCreate() throws Exception {
-
-  }
-
-  @Test
-  public void testBuildShoutDelete() throws Exception {
+    assertNull(ShoutBuilder.withEmpty().setModReasonCode(null).buildShoutChanged().getModReasonCode());
+    assertEquals(ModReasonCode.DELETIONBYSYSTEM, ShoutBuilder.withEmpty().setModReasonCode(ModReasonCode.DELETIONBYSYSTEM).buildShoutChanged().getModReasonCode());
 
   }
 }
