@@ -17,7 +17,6 @@
 package org.powertac.common.commands;
 
 import org.powertac.common.Constants;
-import org.powertac.common.interfaces.Broker;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -36,20 +35,20 @@ public abstract class AbstractCash implements Serializable {
 
     private static final long serialVersionUID = 9051838018541279797L;
 
-    private Broker broker;
+    private Long brokerId;
     private BigDecimal moneyChange;
     private String reason;
     private String origin;
 
-    public AbstractCash(Broker broker, BigDecimal moneyChange, String reason, String origin) {
-        this.broker = broker;
+    public AbstractCash(Long brokerId, BigDecimal moneyChange, String reason, String origin) {
+        this.brokerId = brokerId;
         this.moneyChange = moneyChange;
         this.reason = reason;
         this.origin = origin;
     }
 
-    public AbstractCash(Broker broker, Double moneyChange, String reason, String origin) {
-        this.broker = broker;
+    public AbstractCash(Long brokerId, Double moneyChange, String reason, String origin) {
+        this.brokerId = brokerId;
         if (moneyChange == null) {
             this.moneyChange = null;
         } else {
@@ -62,13 +61,12 @@ public abstract class AbstractCash implements Serializable {
     }
 
     /**
-     * The broker (or more precisely the broker's cash account)
-     * this cash transaction is targeted at.
+     * The brokerId to which this transaction is dedicated.
      *
-     * @return Broker cash account on which to execute the transaction
+     * @return Long brokerId of the broker to execute the transaction for the transaction
      */
-    public Broker getBroker() {
-        return broker;
+    public Long getBrokerId() {
+        return this.brokerId;
     }
 
     /**

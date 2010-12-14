@@ -20,7 +20,6 @@ import org.joda.time.LocalDateTime;
 import org.powertac.common.Constants;
 import org.powertac.common.commands.CashChanged;
 import org.powertac.common.commands.CashUpdate;
-import org.powertac.common.interfaces.Broker;
 
 import java.math.BigDecimal;
 
@@ -40,7 +39,7 @@ import java.math.BigDecimal;
  */
 public class CashBuilder {
 
-    private Broker broker;
+    private Long brokerId;
     private BigDecimal moneyChange;
     private String reason;
     private String origin;
@@ -74,7 +73,7 @@ public class CashBuilder {
     public static CashBuilder withCashChanged(CashChanged cashChanged) {
         CashBuilder cashBuilder = new CashBuilder();
         if (cashChanged != null) {
-            cashBuilder.broker = cashChanged.getBroker();
+            cashBuilder.brokerId = cashChanged.getBrokerId();
             cashBuilder.moneyChange = cashChanged.getMoneyChange();
             cashBuilder.reason = cashChanged.getReason();
             cashBuilder.origin = cashChanged.getOrigin();
@@ -95,7 +94,7 @@ public class CashBuilder {
     public static CashBuilder withCashUpdate(CashUpdate cashUpdate) {
         CashBuilder cashBuilder = new CashBuilder();
         if (cashUpdate != null) {
-            cashBuilder.broker = cashUpdate.getBroker();
+            cashBuilder.brokerId = cashUpdate.getBrokerId();
             cashBuilder.moneyChange = cashUpdate.getMoneyChange();
             cashBuilder.reason = cashUpdate.getReason();
             cashBuilder.origin = cashUpdate.getOrigin();
@@ -105,11 +104,11 @@ public class CashBuilder {
 
     /**
      * Sets the broker in the CashBuilder
-     * @param broker object to use for building new CashUpdate or CashChanged objects
-     * @return CashBuilder instance with updated broker property
+     * @param brokerId id of the broker
+     * @return CashBuilder instance with updated brokerId property
      */
-    public CashBuilder setBroker(Broker broker) {
-        this.broker = broker;
+    public CashBuilder setBrokerId(Long brokerId) {
+        this.brokerId = brokerId;
         return this;
     }
 
@@ -209,7 +208,7 @@ public class CashBuilder {
      * @return CashUpdate object
      */
     public CashUpdate buildCashUpdate() {
-        CashUpdate cashUpdate = new CashUpdate(this.broker, this.moneyChange, this.reason, this.origin);
+        CashUpdate cashUpdate = new CashUpdate(this.brokerId, this.moneyChange, this.reason, this.origin);
         return cashUpdate;
     }
 
@@ -219,7 +218,7 @@ public class CashBuilder {
      * @return CashChanged object
      */
     public CashChanged buildCashChanged() {
-        CashChanged cashChanged = new CashChanged(this.broker, this.moneyChange, this.reason, this.origin, this.transactionId, this.balance, this.dateCreated);
+        CashChanged cashChanged = new CashChanged(this.brokerId, this.moneyChange, this.reason, this.origin, this.transactionId, this.balance, this.dateCreated);
         return cashChanged;
     }
 

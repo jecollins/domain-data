@@ -16,8 +16,6 @@
 
 package org.powertac.common.commands;
 
-import org.powertac.common.interfaces.Broker;
-
 import java.math.BigDecimal;
 
 /**
@@ -32,12 +30,12 @@ public class CashUpdate extends AbstractCash {
 
     private static final long serialVersionUID = 1865147840672112686L;
 
-    public CashUpdate(Broker broker, BigDecimal moneyChange, String reason, String origin) {
-        super(broker, moneyChange, reason, origin);
+    public CashUpdate(Long brokerId, BigDecimal moneyChange, String reason, String origin) {
+        super(brokerId, moneyChange, reason, origin);
     }
 
-    public CashUpdate(Broker broker, Double moneyChange, String reason, String origin) {
-        super(broker, moneyChange, reason, origin);
+    public CashUpdate(Long brokerId, Double moneyChange, String reason, String origin) {
+        super(brokerId, moneyChange, reason, origin);
     }
 
 }

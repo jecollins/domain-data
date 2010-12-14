@@ -52,7 +52,7 @@ public class CashBuilderTest {
     public void testWithEmpty() throws Exception {
         CashChanged cashChanged = CashBuilder.withEmpty().buildCashChanged();
         assertNull(cashChanged.getBalance());
-        assertNull(cashChanged.getBroker());
+        assertNull(cashChanged.getBrokerId());
         assertNull(cashChanged.getMoneyChange());
         assertNull(cashChanged.getOrigin());
         assertNull(cashChanged.getReason());
@@ -60,7 +60,7 @@ public class CashBuilderTest {
         assertNull(cashChanged.getTransactionId());
 
         CashUpdate cashUpdate = CashBuilder.withEmpty().buildCashUpdate();
-        assertNull(cashUpdate.getBroker());
+        assertNull(cashUpdate.getBrokerId());
         assertNull(cashUpdate.getMoneyChange());
         assertNull(cashUpdate.getOrigin());
         assertNull(cashUpdate.getReason());
@@ -81,7 +81,7 @@ public class CashBuilderTest {
         //generate new originalCashChanged object based on existing originalCashChanged object
         CashChanged newCashChanged = CashBuilder.withCashChanged(originalCashChanged).buildCashChanged();
         assertNotSame(originalCashChanged, newCashChanged);
-        assertEquals(null, newCashChanged.getBroker());
+        assertEquals(null, newCashChanged.getBrokerId());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), newCashChanged.getMoneyChange()); //use String constructor for BigDecimal as adviced in JDK docs
         assertEquals(reason, newCashChanged.getReason());
         assertEquals(origin, newCashChanged.getOrigin());
@@ -91,7 +91,7 @@ public class CashBuilderTest {
 
         //generate new cashUpdate object based on existing cashUpdate object
         CashUpdate newCashUpdate = CashBuilder.withCashChanged(originalCashChanged).buildCashUpdate();
-        assertEquals(null, newCashUpdate.getBroker());
+        assertEquals(null, newCashUpdate.getBrokerId());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), newCashUpdate.getMoneyChange()); //use String constructor for BigDecimal as adviced in JDK docs
         assertEquals(reason, newCashUpdate.getReason());
         assertEquals(origin, newCashUpdate.getOrigin());
@@ -112,14 +112,14 @@ public class CashBuilderTest {
         //generate new CashUpdate object based on existing originalCashUpdate object
         CashUpdate newCashUpdate = CashBuilder.withCashUpdate(originalCashUpdate).buildCashUpdate();
         assertNotSame(originalCashUpdate, newCashUpdate);
-        assertEquals(null, newCashUpdate.getBroker());
+        assertEquals(null, newCashUpdate.getBrokerId());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), newCashUpdate.getMoneyChange()); //use String constructor for BigDecimal as adviced in JDK docs
         assertEquals(reason, newCashUpdate.getReason());
         assertEquals(origin, newCashUpdate.getOrigin());
 
         //generate new CashChanged object based on existing originalCashUpdate object
         CashChanged newCashChanged = CashBuilder.withCashUpdate(originalCashUpdate).buildCashChanged();
-        assertEquals(null, newCashChanged.getBroker());
+        assertEquals(null, newCashChanged.getBrokerId());
         assertEquals(new BigDecimal(".1").setScale(Constants.DECIMALS, Constants.ROUNDING_MODE), newCashChanged.getMoneyChange()); //use String constructor for BigDecimal as adviced in JDK docs
         assertEquals(reason, newCashChanged.getReason());
         assertEquals(origin, newCashChanged.getOrigin());
@@ -130,7 +130,10 @@ public class CashBuilderTest {
 
     @Test
     public void testSetBroker() throws Exception {
-        //TODO: implement this method once a BrokerImpl inheriting Broker interface is available
+        assertNull(CashBuilder.withEmpty().setBrokerId(null).buildCashChanged().getBrokerId());
+        assertNull(CashBuilder.withEmpty().setBrokerId(null).buildCashUpdate().getBrokerId());
+        assertEquals((Long) 1l, CashBuilder.withEmpty().setBrokerId(1l).buildCashChanged().getBrokerId());
+        assertEquals((Long) 1l, CashBuilder.withEmpty().setBrokerId(1l).buildCashUpdate().getBrokerId());
     }
 
     @Test
@@ -192,11 +195,11 @@ public class CashBuilderTest {
 
     @Test
     public void testBuildCashUpdate() throws Exception {
-
+        assertNotNull(CashBuilder.withEmpty().buildCashUpdate());
     }
 
     @Test
     public void testBuildCashChanged() throws Exception {
-
+        assertNotNull(CashBuilder.withEmpty().buildCashChanged());
     }
 }

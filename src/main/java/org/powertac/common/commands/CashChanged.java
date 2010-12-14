@@ -38,8 +38,8 @@ public class CashChanged extends AbstractCash {
     private BigDecimal balance;
     private LocalDateTime dateCreated;
 
-    public CashChanged(Broker broker, Double moneyChange, String reason, String origin, Long transactionId, Double balance, LocalDateTime dateCreated) {
-        super(broker, moneyChange, reason, origin);
+    public CashChanged(Long brokerId, Double moneyChange, String reason, String origin, Long transactionId, Double balance, LocalDateTime dateCreated) {
+        super(brokerId, moneyChange, reason, origin);
         this.transactionId = transactionId;
         BigDecimal value = new BigDecimal(balance);
         value = value.setScale(Constants.DECIMALS, Constants.ROUNDING_MODE);
@@ -47,8 +47,8 @@ public class CashChanged extends AbstractCash {
         this.dateCreated = dateCreated;
     }
 
-    public CashChanged(Broker broker, BigDecimal moneyChange, String reason, String origin, Long transactionId, BigDecimal balance, LocalDateTime dateCreated) {
-        super(broker, moneyChange, reason, origin);
+    public CashChanged(Long brokerId, BigDecimal moneyChange, String reason, String origin, Long transactionId, BigDecimal balance, LocalDateTime dateCreated) {
+        super(brokerId, moneyChange, reason, origin);
         this.transactionId = transactionId;
         this.balance = balance;
         this.dateCreated = dateCreated;
