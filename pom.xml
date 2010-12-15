@@ -18,12 +18,6 @@
   <url>http://powertac.org</url>
 
   <dependencies>
-    <dependency>
-      <groupId>org.joda</groupId>
-      <artifactId>com.springsource.org.joda.time</artifactId>
-      <version>${joda.version}</version>
-      <scope>provided</scope>
-    </dependency>
     <!-- Spring Integration Dependencies -->
     <dependency>
       <groupId>org.springframework.integration</groupId>
